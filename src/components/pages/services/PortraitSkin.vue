@@ -44,8 +44,8 @@
                         </ImgComparisonSlider>
 
                         <div class="button-group">
-                            <button class="btn btn-dark-default place-order">Place an order</button>
-                            <button class="btn btn-default free-trial">Have a free trial</button>
+                            <button class="place-order">Place an order</button>
+                            <button class="free-trial">Have a free trial</button>
                         </div>
 
                     </div>
@@ -78,15 +78,15 @@ export default {
 
 .portrait-comments {
     background-color: #00bcd4;
-    padding: 50px;
+    padding: 20px;
     border-radius: 20px;
     color: #fff;
-    box-shadow: rgba(0, 188, 212, 0.4) 5px 5px, rgba(0, 188, 212, 0.3) 10px 10px, rgba(0, 188, 212, 0.2) 15px 15px, rgba(0, 188, 212, 0.1) 20px 20px, rgba(0, 188, 212, 0.05) 25px 25px;
+    box-shadow: rgba(0, 188, 212, 0.4) 5px 5px, rgba(0, 188, 212, 0.3) 10px 10px, rgb(255 255 255) 15px 15px, rgb(0 0 0 / 10%) 20px 20px, rgba(0, 188, 212, 0.05) 25px 25px;
     font-style: italic;
     margin-top: 50px;
     width: 600px;
     max-width: 100%;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .portrait-skin ul {
@@ -111,6 +111,22 @@ export default {
 
 .portrait-skin .button-group .free-trial {
     width : calc(50% - 10px);
+}
+
+.place-order, .free-trial {
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: #45465a 0 10px 20px -10px;
+}
+
+.place-order {
+    background-color: #00bcd4;
+}
+
+.free-trial {
+    background-color: #45465a;
 }
 
 </style>

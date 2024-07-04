@@ -3,67 +3,173 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-title text-center">
-                    <h2>Our Sample Work</h2>
-                    <p>Click on each image to see the full view of ”Before & After”!! <br/>We showcase our recent photo processing project that we did for professional photographers & e-commerce companies.</p>
+                    <h2>{{ acfData.page_title }}</h2>
+                    <p>{{ acfData.page_sub_title }} </p>
                     <div class="divide-separator divide-center"></div>
                 </div>
                 <div class="col-md-12">
                     <div class="d-flex align-items-start sample-work">
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">All</button>
-                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Cliping Path & Cutout</button>
-                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Shadow Making</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Background Removal</button>
+                        <button
+                            class="nav-link"
+                            :class="{ active: activeTab === 'All' }"
+                            id="v-pills-home-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#v-pills-home"
+                            type="button"
+                            role="tab"
+                            aria-controls="v-pills-home"
+                            aria-selected="true"
+                            @click="setActiveTab('All')"
+                        >All</button>
+                        <button
+                            v-for="(tab, index) in acfData.sample_work_tab"
+                            :key="index"
+                            class="nav-link"
+                            :class="{ active: activeTab === tab.tab_title }"
+                            :id="'v-pills-' + index + '-tab'"
+                            data-bs-toggle="pill"
+                            :data-bs-target="'#v-pills-' + index"
+                            type="button"
+                            role="tab"
+                            :aria-controls="'v-pills-' + index"
+                            :aria-selected="activeTab === tab.tab_title"
+                            @click="setActiveTab(tab.tab_title)"
+                        >{{ tab.tab_title }}</button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="single-sample">
-                                            <img class="active-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/JOF_8294__After-600x413-2.jpg?w=800&amp;ssl=1" alt="">
-                                            <img class="hover-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/JOF_8294__Before-600x413-2.jpg?w=800&ssl=1" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="single-sample">
-                                            <img class="active-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/Vdara_Feb18-059-3.jpg?w=800&ssl=1" alt="">
-                                            <img class="hover-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/Vdara_Feb18-059-4.jpg?w=800&ssl=1" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="single-sample">
-                                            <img class="active-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/shutterstock_445313647-3.jpg?w=800&ssl=1" alt="">
-                                            <img class="hover-image"  src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/shutterstock_445313647-4.jpg?w=800&ssl=1" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="single-sample">
-                                            <img class="active-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/Vdara_Feb18-059-3.jpg?w=800&ssl=1" alt="">
-                                            <img class="hover-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/Vdara_Feb18-059-4.jpg?w=800&ssl=1" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="single-sample">
-                                            <img class="active-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/Vdara_Feb18-059-3.jpg?w=800&ssl=1" alt="">
-                                            <img class="hover-image" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/09/Vdara_Feb18-059-4.jpg?w=800&ssl=1" alt="">
-                                        </div>
+                        <div
+                            class="tab-pane fade"
+                            :class="{ 'show active': activeTab === 'All' }"
+                            id="v-pills-home"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-home-tab"
+                        >
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4" v-for="(image, index) in allImages" :key="index">
+                                    <div class="single-sample" @click.prevent="handleImgClick(image)">
+                                        <img class="active-image" :src="image.before_image" alt="">
+                                        <img class="hover-image" :src="image.after_image" alt="">
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"></div>
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                        </div>
+                        <div
+                            v-for="(tab, index) in acfData.sample_work_tab"
+                            :key="index"
+                            class="tab-pane fade"
+                            :class="{ 'show active': activeTab === tab.tab_title }"
+                            :id="'v-pills-' + index"
+                            role="tabpanel"
+                            :aria-labelledby="'v-pills-' + index + '-tab'"
+                        >
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4" v-for="(image, imgIndex) in tab.tab_images" :key="imgIndex">
+                                    <div class="single-sample" @click.prevent="handleImgClick(image)" >
+                                        <img class="active-image" :src="image.before_image" alt="">
+                                        <img class="hover-image" :src="image.after_image" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- When the single image is clicked -->
+        <div class="overlay" v-if="isPopupVisible" @click="closePopup"></div>
+        <div class="arrows" v-if="isPopupVisible">
+            <i class="bi bi-arrow-left-circle" @click.prevent="handlePrev(popupImgSrc.index)"></i>
+            <i class="bi bi-arrow-right-circle" @click.prevent="handleNext(popupImgSrc.index)"></i>
+        </div>
+        <div class="image-popup" v-if="isPopupVisible">
+            <div class="cross" @click="closePopup">
+                <i class="bi bi-x-octagon"></i>
+            </div>
+            <div class="d-flex justify-content-center mt-2 mb-2" v-if="!isImgLoaded">
+                <div class="spinner-grow" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <img :src="popupImgSrc.popup_image" alt="" @load="setImgLoad">
+            <p class="image-title">{{ popupImgSrc.popup_image_title }} <span class="image-count">
+                {{ popupImgSrc.index + 1 }} of {{ allImages.length }}
+            </span></p>
         </div>
     </section>
 </template>
 
 <script>
 export default {
-    
+    props : ['acfData'], 
+    data() {
+        return {
+            activeTab: 'All',
+            allImages : [], 
+            popupImgSrc : null,
+            isPopupVisible: false,
+            isImgLoaded : false,
+        }
+    },
+    methods: {
+        setImgLoad() {
+            this.isImgLoaded = true;
+        },
+        handlePrev(currentIndex) {
+            const prexIndex = currentIndex - 1;
+            if(this.allImages[prexIndex]) {
+                const image = this.allImages[prexIndex];
+                this.popupImgSrc = {
+                    src : image.before_image, 
+                    popup_image_title : image.popup_image_title, 
+                    index : image.key,
+                    popup_image : image.popup_image
+                };
+            }
+        },
+        handleNext(currentIndex) {
+            const nextIndex = currentIndex + 1;
+            if(this.allImages[nextIndex]) {
+                const image = this.allImages[nextIndex];
+                this.popupImgSrc = {
+                    src : image.before_image, 
+                    popup_image_title : image.popup_image_title, 
+                    index : image.key,
+                    popup_image : image.popup_image
+                };
+            }
+        },
+        closePopup() {
+            this.isPopupVisible = false;
+        },
+        handleImgClick(image) {
+            this.popupImgSrc = {
+                src : image.before_image, 
+                popup_image_title : image.popup_image_title, 
+                index : image.key,
+                popup_image : image.popup_image
+            };
+            this.isPopupVisible = true;
+        },
+        setActiveTab(tabTitle) {
+            this.activeTab = tabTitle;
+        }
+    },
+    mounted() {
+        const acfData = this.acfData;
+        let uniqueIndex = 0; // Initialize a counter for unique indices
+
+        if (acfData && acfData.sample_work_tab && Array.isArray(acfData.sample_work_tab)) {
+            acfData.sample_work_tab.forEach(tab => {
+                tab.tab_images.forEach(image => {
+                    image.key = uniqueIndex++; // Assign a unique index to each image
+                    this.allImages.push(image); // Add the image to allImages array
+                });
+            });
+        }
+    }
 }
 </script>
 <style>
@@ -85,6 +191,7 @@ export default {
 .single-sample {
     box-shadow: 1px 1px 1px #ddd;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .single-sample img {
@@ -93,7 +200,7 @@ export default {
 
 .single-sample .hover-image {
     display : none;
-    transition: all ease-in .3s;
+    transition: all ease-in .1s;
 }
 
 .single-sample:hover .hover-image {
@@ -102,5 +209,68 @@ export default {
 
 .single-sample:hover .active-image {
     display : none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.image-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-popup p {
+    margin-bottom : 0;
+}
+
+.image-popup img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.image-popup .cross {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.image-popup span.image-count {
+    float: right;
+}
+
+.arrows {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.arrows i {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
 }
 </style>

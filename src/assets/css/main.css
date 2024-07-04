@@ -352,6 +352,7 @@ img {
 
 .coloured-slider {
     outline: 2px solid #dcdfff;
+    width : 100%;
 }
 
 @media ( max-width: 992px) { 
@@ -372,6 +373,14 @@ img {
         padding : 10px 0;
     }
 }
+
+/* .coloured-slider {
+    height : 100%;
+} */
+
+/* figure {
+    height: 100%;;
+} */
 
 @media ( max-width: 768px) { 
 
