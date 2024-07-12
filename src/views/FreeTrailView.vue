@@ -1,11 +1,18 @@
 <template>
     <div class="free-trial main-content">
         <the-header-banner title="Free Trial"></the-header-banner>
-        <get-started></get-started>
-        <benefit-with-us></benefit-with-us>
-        <happy-clients></happy-clients>
-        <common-questions></common-questions>
-        <how-it-works></how-it-works>
+        <div class="d-flex justify-content-center" v-if="!option_data">
+            <div class="spinner-grow" role="status">
+                <span class="visually-hidden">{{ loadingText }}</span>
+            </div>
+        </div>
+        <div v-else>
+            <get-started :data="option_data.get_started_with_our_services_for_free_group"></get-started>
+            <benefit-with-us :data="option_data.benefit_of_partnering_with_us_group"></benefit-with-us>
+            <happy-clients :data="option_data.happy_clients_group"></happy-clients>
+            <common-questions :data="option_data.frquently_asked_questions_group"></common-questions>
+            <how-it-works :data="option_data.how_it_works_group"></how-it-works>
+        </div>
     </div>
 </template>
 <script>
@@ -24,6 +31,11 @@ export default {
         HappyClients,
         HowItWorks,
         CommonQuestions
+    },
+    computed : {
+        option_data() {
+            return this.$store.state.options;
+        }
     }
 }
 </script>

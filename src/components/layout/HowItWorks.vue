@@ -1,46 +1,26 @@
 <template>
-    <div class="how-it-works" :style="{ backgroundColor: bgColor }"> 
+    <div class="how-it-works" :style="{ backgroundColor: bgColor }" v-if="data"> 
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-title text-center">
-                    <h2>How it Works</h2>
-                    <p>would like to give you a unique photography experience. There are many variation
-and of passages</p>
-<div class="divide-separator divide-center"></div>
+                    <h2 v-if="data.section_title">{{ data.section_title }}</h2>
+                    <p v-if="data.section_sub_title">{{  data.section_sub_title }}</p>
+                    <div class="divide-separator divide-center"></div>
                 </div>
-                <div class="col-md-6">
-                    <div class="how-it-works-list">
+                <div class="col-md-6" v-if="data.section_options">
+                    <div class="how-it-works-list" v-for="(option, index) in data.section_options" :key="index">
                         <div class="how-it-works-number">
-                            1
+                            {{ index + 1 }}
                         </div>
                         <div class="how-it-works-info">
-                            <h3>01. Order your item</h3>
-                            <p>would like to give you a unique photography experience</p>
+                            <h3>{{ option.title }}</h3>
+                            <p>{{ option.description }}</p>
                         </div>
-                    </div>
-                    <div class="how-it-works-list">
-                        <div class="how-it-works-number how-it-works-bg-2">
-                            1
-                        </div>
-                        <div class="how-it-works-info">
-                            <h3>02. Order your item</h3>
-                            <p>built to serve you best and capture your special moments.</p>
-                        </div>
-                    </div>
-                
-                    <div class="how-it-works-list">
-                        <div class="how-it-works-number how-it-works-bg-3">
-                            1
-                        </div>
-                        <div class="how-it-works-info">
-                            <h3>03. Order your item</h3>
-                            <p>would like to give you a unique photography experience moments.</p>
-                        </div>
-                    </div>   
+                    </div>  
                 </div>
-                <div class="col-md-6 justify-content-center align-items-center">
+                <div class="col-md-6 justify-content-center align-items-center" v-if="data.section_image">
                     <div class="section-main-image">
-                        <img src="@/assets/images/how-it-works.png" />
+                        <img :src="data.section_image" />
                     </div>
                 </div>
             </div>    
@@ -49,7 +29,7 @@ and of passages</p>
 </template>
 <script>
 export default {
-    props : ['color'],
+    props : ['color', 'data'],
     data() {
         return {
             bgColor : this.color

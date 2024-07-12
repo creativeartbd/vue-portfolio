@@ -1,9 +1,16 @@
 <template>
     <div class="order main-content">
         <the-header-banner title="Order"></the-header-banner>
-        <get-started></get-started>
-        <common-questions color="#fff"></common-questions>
-        <how-it-works color="#fbfbfb"></how-it-works>
+        <div class="d-flex justify-content-center" v-if="!option_data">
+            <div class="spinner-grow" role="status">
+                <span class="visually-hidden">{{ loadingText }}</span>
+            </div>
+        </div>
+        <div v-else>
+            <get-started :data="option_data.get_started_with_our_services_for_free_group"></get-started>
+            <common-questions color="#fff" :data="option_data.frquently_asked_questions_group"></common-questions>
+            <how-it-works color="#fbfbfb" :data="option_data.how_it_works_group"></how-it-works>
+        </div>
     </div>
 </template>
 <script>
@@ -19,6 +26,11 @@ export default {
         GetStarted, 
         HowItWorks,
         CommonQuestions, 
+    },
+    computed : {
+        option_data() {
+            return this.$store.state.options;
+        }
     }
 }
 </script>

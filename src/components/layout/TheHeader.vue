@@ -106,6 +106,7 @@ export default {
     },
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
+        this.$store.dispatch('getOptions');
     },
     beforeUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
@@ -121,7 +122,7 @@ export default {
                 this.isSticky = false;
             }
         }
-    }
+    },
 }
 </script>
 

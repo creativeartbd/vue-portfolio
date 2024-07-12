@@ -31,9 +31,9 @@ export default {
     components : {
         PageLoader,
     },
-    mounted() {
-        this.$store.dispatch('getOptions');
-    },
+    // mounted() {
+    //     this.$store.dispatch('getOptions');
+    // },
 }
 </script>
 <style scoped>

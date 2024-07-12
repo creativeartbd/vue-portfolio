@@ -1,10 +1,10 @@
 <template>
-    <section class="sample">
+    <section class="sample-page">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-title text-center">
                     <h2>{{ acfData.page_title }}</h2>
-                    <p>{{ acfData.page_sub_title }} </p>
+                    <div v-html="acfData.page_sub_title"></div>
                     <div class="divide-separator divide-center"></div>
                 </div>
                 <div class="col-md-12">
@@ -173,25 +173,33 @@ export default {
 }
 </script>
 <style>
-
+.sample-page {
+    background-color: #ddd;
+}
 .sample-work .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     background-color: #00bcd4;
     background-image: linear-gradient(90deg, #00bcd4 0%, #0dd1ff 100%);
+    border : none;
 }
 
 .sample-work .nav-link {
-    color : #000;
+    color: #333;
     text-align: left;
+    border: 1px solid #333;
+    border-radius: 0;
+    background: #f1f1f1;
 }
 
 .sample-work .nav button {
     width : 250px;
+    margin-bottom: 10px;
 }
 
 .single-sample {
     box-shadow: 1px 1px 1px #ddd;
     margin-bottom: 15px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .single-sample img {

@@ -1,42 +1,21 @@
 <template>
-    <div class="we-can-deliver">
+    <div class="we-can-deliver" v-if="data">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center">
-                        <h2>We've accomplished</h2>
-                        <p>Here you can set some of sub title content</p>
+                        <h2 v-if="data.section_title">{{ data.section_title }}</h2>
+                        <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
                         <div class="divide-separator divide-center"></div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
+            <div class="row" v-if="data.section_options">
+                <div class="col-md-3" v-for="(box, index) in data.section_options" :key="index">
                     <div class="deliver-item">
-                        <h3>400</h3>
-                        <h5>Files processed</h5>
-                        <p>Successfully edited 705K+ images, while maintaning high-quality service.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="deliver-item">
-                        <h3>98.5%</h3>
-                        <h5>On Time Dilvery</h5>
-                        <p>We ensure on-time delivery that is worth our time and money.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="deliver-item">
-                        <h3>5K+</h3>
-                        <h5>Image per week</h5>
-                        <p>Completed over 5K+ orders with full customer satisfaction.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="deliver-item">
-                        <h3>50+</h3>
-                        <h5>Country served</h5>
-                        <p>50 graphcs desingers made us one of industry leading competitors.</p>
+                        <h3 v-if="box.number">{{ box.number }}</h3>
+                        <h5 v-if="box.title">{{ box.title }}</h5>
+                        <p v-if="box.content">{{ box.content }}</p>
                     </div>
                 </div>
             </div>
@@ -45,7 +24,7 @@
 </template>
 <script>
 export default {
-    
+    props : ['data']
 }
 </script>
 <style scoped>

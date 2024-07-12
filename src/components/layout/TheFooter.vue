@@ -57,7 +57,7 @@ export default {
         }
     },
     mounted() {
-        this.$store.dispatch('getOptions');
+        // this.$store.dispatch('getOptions');
     },
 }
 </script>

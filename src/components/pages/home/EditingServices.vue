@@ -96,7 +96,7 @@ export default {
     created() {
         // Assuming you have the menu location and endpoint set up on your WordPress site
         const siteUrl = 'https://cutoutpartner-api.com/';
-        const restApiEndpoint = '/wp-json/wp/v2/pages/531?acf_format=standard'; // Replace with the desired REST API endpoint
+        const restApiEndpoint = 'wp-json/wp/v2/pages/531?acf_format=standard'; // Replace with the desired REST API endpoint
         const username = 'dsa_clippingpathland';
 
         // Replace with your generated application password

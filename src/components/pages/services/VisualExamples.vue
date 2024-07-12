@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                     <div class="visual-examples-wrapper">
                         <div class="grid-wrapper">
-                            <div class="before-after">
+                            <div class="same-size">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -32,7 +32,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="tall">
+                            <div class="tall second-size">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -52,7 +52,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="tall wide">
+                            <div class="tall wide third-size">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -72,7 +72,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div>
+                            <div class="same-size">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -92,15 +92,15 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="wide">
+                            <div class="same-size">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
-                                        <img slot="first" style="width: 100%" :src.lazy="beforeImg" />
+                                        <img slot="first" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1" />
                                         <figcaption>Before</figcaption>
                                     </figure>
                                     <figure slot="second" class="after">
-                                        <img slot="second" style="width: 100%" :src.lazy="afterImg" />
+                                        <img slot="second" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1" />
                                         <figcaption>After</figcaption>
                                     </figure>
                                     <div slot="handle">
@@ -112,15 +112,15 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div>
+                            <div class="same-size">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
-                                        <img slot="first" style="width: 100%" :src.lazy="beforeImg" />
+                                        <img slot="first" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1" />
                                         <figcaption>Before</figcaption>
                                     </figure>
                                     <figure slot="second" class="after">
-                                        <img slot="second" style="width: 100%" :src.lazy="afterImg" />
+                                        <img slot="second" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1" />
                                         <figcaption>After</figcaption>
                                     </figure>
                                     <div slot="handle">
@@ -132,15 +132,35 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div>
+                            <div class="same-size">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
-                                        <img slot="first" style="width: 100%" :src.lazy="beforeImg" />
+                                        <img slot="first" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1" />
                                         <figcaption>Before</figcaption>
                                     </figure>
                                     <figure slot="second" class="after">
-                                        <img slot="second" style="width: 100%" :src.lazy="afterImg" />
+                                        <img slot="second" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1" />
+                                        <figcaption>After</figcaption>
+                                    </figure>
+                                    <div slot="handle">
+                                        <div class="bf-circle">
+                                            <i class="bi bi-caret-left-fill"></i>
+                                            <i class="bi bi-caret-right-fill"></i>
+                                        </div>
+                                    </div>
+                                    <!-- eslint-enable -->
+                                </ImgComparisonSlider>
+                            </div>
+                            <div class="same-size">
+                                <ImgComparisonSlider class="coloured-slider">
+                                    <!-- eslint-disable -->
+                                    <figure slot="first" class="before">
+                                        <img slot="first" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1" />
+                                        <figcaption>Before</figcaption>
+                                    </figure>
+                                    <figure slot="second" class="after">
+                                        <img slot="second" style="width: 100%" src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1" />
                                         <figcaption>After</figcaption>
                                     </figure>
                                     <div slot="handle">
@@ -194,7 +214,7 @@ export default {
 	display: grid;
 	grid-gap: 10px;
 	grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
-	grid-auto-rows: 200px;
+	grid-auto-rows: auto;
 	grid-auto-flow: dense;
 }
 .grid-wrapper .wide {
@@ -223,5 +243,73 @@ export default {
 }
 .bf-circle i {
     color: #fff;
+}
+
+.before figcaption,
+.after figcaption {
+    background: #5e5e5eb5;
+    border: none;
+    color: #fff;
+    opacity: 0.8;
+    padding: 12px;
+    position: absolute;
+    top: 10%;
+    transform: translateY(-50%);
+    line-height: 100%;
+}
+
+.before figcaption {
+    left: 12px;
+}
+
+.after figcaption {
+    right: 37px;
+}
+
+.before-after{
+    padding: 0;
+    cursor: pointer;
+}
+figure {
+    margin : 0;
+}
+
+.coloured-slider {
+    outline: none;
+}
+
+.same-size .coloured-slider {
+    /* width : 265px; */
+    height : 303px;
+}
+
+.same-size figure {
+    /* width : 265px; */
+    height : 303px;
+}
+
+.second-size .coloured-slider {
+    /* width : 265px; */
+    height : 625px;
+}
+
+.second-size figure {
+    /* width : 265px; */
+    height : 625px;
+}
+
+.third-size .coloured-slider {
+    /* width : 5442px; */
+    height : 625px;
+}
+
+.third-size figure {
+    /* width : 542px; */
+    height : 625px;
+}
+
+.visual-examples-wrapper {
+    max-width: 1140px;
+    margin : 0 auto;
 }
 </style>

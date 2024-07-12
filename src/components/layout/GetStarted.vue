@@ -2,17 +2,13 @@
     <div class="get-started">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6" v-if="data">
                     <div class="get-started-details">
                         <div class="section-title">
-                            <h2>Get Started with <br/> Our Services for Free</h2>
-                            <p> would like to give you a unique photography experience, built to serve you best and capture your special moments for you and your families creatively and beautifully.</p>
+                            <h2 v-if="data.section_title">{{ data.section_title }}</h2>
+                            <p  v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
                         </div>
-                        <ul>
-                            <li>Greater Efficiency</li>
-                            <li>Cost-Effectiveness</li>
-                            <li>Repaid Turnaround Times</li>
-                        </ul>
+                        <div v-if="data.section_description" v-html="data.section_description"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -25,8 +21,11 @@
 <script>
 import GetStartedForm from '@/components/form/GetStartedForm.vue';
 export default {
+    props : ['data'],
     components : {
         GetStartedForm
+    }, 
+    mounted() {
     }
 }
 </script>

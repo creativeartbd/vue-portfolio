@@ -86,10 +86,13 @@ section p {
     background: linear-gradient(to right, #00bcd4, #eafdff);
     height: 3px;
     width: 10%;
+    margin-top : 20px;
+    margin-bottom : 20px;
 }
 
 .divide-center {
-    margin : 0 auto;
+    margin-left : auto;
+    margin-right : auto;
 }
 
 .btn-default {
@@ -351,7 +354,7 @@ img {
 }
 
 .coloured-slider {
-    outline: 2px solid #dcdfff;
+    /* outline: 2px solid #dcdfff; */
     width : 100%;
 }
 

@@ -22,7 +22,7 @@ export default createStore({
             context.commit('setLoading', false); // Set loading to true when starting to fetch
             // Assuming you have the menu location and endpoint set up on your WordPress site
             const siteUrl = 'https://cutoutpartner-api.com/';
-            const restApiEndpoint = '/wp-json/wp/v2/theme-options'; // Replace with the desired REST API endpoint
+            const restApiEndpoint = 'wp-json/wp/v2/theme-options'; // Replace with the desired REST API endpoint
             const username = 'dsa_clippingpathland';
 
             // Replace with your generated application password

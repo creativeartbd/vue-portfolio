@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+// import store from '@/store';
 
 const routes = [
     {
@@ -85,7 +86,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     // This function runs before every route change
     // console.log(`Navigating from ${from.fullPath} to ${to.fullPath}`);
-
+    // store.dispatch('getOptions');
     next(); // Make sure to always call next()!
 });
 

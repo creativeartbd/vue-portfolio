@@ -21,8 +21,15 @@
                         <li>Hair retouching</li>
                     </ul>
 
-                    <div class="portrait-comments">
+                    <!-- <div class="portrait-comments">
                         Top motch customer servie, retourching done to suit your personal taste. Say something about having a fast turnaround because clietns like that
+                    </div> -->
+
+                    <div class="animated-border-quote">
+                        <blockquote>
+                            <p>The world always seems brighter when you’ve just made something that wasn’t there before.</p>
+                            <cite>Neil Gaiman</cite>
+                        </blockquote>
                     </div>
 
                 </div>
@@ -81,7 +88,7 @@ export default {
     padding: 20px;
     border-radius: 20px;
     color: #fff;
-    box-shadow: rgba(0, 188, 212, 0.4) 5px 5px, rgba(0, 188, 212, 0.3) 10px 10px, rgb(255 255 255) 15px 15px, rgb(0 0 0 / 10%) 20px 20px, rgba(0, 188, 212, 0.05) 25px 25px;
+    box-shadow: rgba(0, 188, 212, 0.4) 5px 5px;
     font-style: italic;
     margin-top: 50px;
     width: 600px;
@@ -115,9 +122,9 @@ export default {
 
 .place-order, .free-trial {
     border: none;
-    border-radius: 10px;
+    border-radius: 25px;
     color: #fff;
-    padding: 15px 0;
+    padding: 12px 0;
     box-shadow: #45465a 0 10px 20px -10px;
 }
 
@@ -127,6 +134,102 @@ export default {
 
 .free-trial {
     background-color: #45465a;
+}
+
+.animated-border-quote {
+  display: inline-block;
+  margin: 1em;
+  overflow: hidden;
+}
+.animated-border-quote blockquote {
+  background-color: #fff;
+  border: solid 2px #00bcd4;
+  display: inline-block;
+  margin: 0 3rem;
+  padding: 1em;
+  position: relative;
+
+}
+.animated-border-quote blockquote:before {
+  animation: clockwise 30s infinite linear;
+  background-color: #fff;
+  bottom: 10%;
+  content: "";
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: 10%;
+}
+.animated-border-quote blockquote:after {
+  animation: counter 30s infinite linear;
+  background-color: #fff;
+  bottom: 10%;
+  content: "";
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: 10%;
+}
+.animated-border-quote blockquote cite {
+  display: block;
+  font-style: italic;
+  text-align: right;
+}
+.animated-border-quote blockquote cite:before {
+  content: "- ";
+}
+.animated-border-quote blockquote > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes clockwise {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes counter {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+.animated-shadow-quote {
+  display: inline-block;
+  margin: 1em;
+  max-width: 20em;
+  position: relative;
+}
+.animated-shadow-quote blockquote {
+  animation: shadows 2s linear infinite alternate;
+  display: inline-block;
+  margin: 0;
+  padding: 1em;
+}
+.animated-shadow-quote blockquote cite {
+  display: block;
+  font-style: italic;
+  text-align: right;
+}
+.animated-shadow-quote blockquote cite:before {
+  content: "- ";
+}
+
+@keyframes shadows {
+  0% {
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.25);
+    transform: scale(0.95);
+  }
+  100% {
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
+    transform: scale(1);
+  }
 }
 
 </style>

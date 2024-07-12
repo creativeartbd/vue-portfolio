@@ -1,9 +1,17 @@
 <template>
     <div class="contact main-content">
         <the-header-banner title="Contact"></the-header-banner>
-        <contact-address></contact-address>
-        <common-questions></common-questions>
-        <contact-map></contact-map>
+        <div class="d-flex justify-content-center" v-if="!option_data">
+            <div class="spinner-grow" role="status">
+                <span class="visually-hidden">{{ loadingText }}</span>
+            </div>
+        </div>
+        <div v-else>
+            <!-- <pre>{{ option_data }}</pre> -->
+            <contact-address :data="option_data.contact_us_group"></contact-address>
+            <common-questions :data="option_data.frquently_asked_questions_group"></common-questions>
+            <contact-map :data="option_data.contact_us_group.contact_map"></contact-map>
+        </div>
     </div>
 </template>
 <script>
@@ -18,6 +26,11 @@ export default {
         ContactMap, 
         CommonQuestions
     },
+    computed : {
+        option_data() {
+            return this.$store.state.options;
+        }
+    }
 }
 </script>
 <style scoped>

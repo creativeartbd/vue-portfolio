@@ -1,12 +1,19 @@
 <template>
     <div class="testimonial main-content">
         <the-header-banner title="Testimonial"></the-header-banner>
-        <benefit-with-us></benefit-with-us>
-        <happy-clients></happy-clients>
-        <who-we-are></who-we-are>
-        <professional-approach></professional-approach>
-        <we-can-deliver></we-can-deliver>
-        <common-questions></common-questions> 
+        <div class="d-flex justify-content-center" v-if="!option_data">
+            <div class="spinner-grow" role="status">
+                <span class="visually-hidden">{{ loadingText }}</span>
+            </div>
+        </div>
+        <div v-else>
+            <benefit-with-us :data="option_data.benefit_of_partnering_with_us_group"></benefit-with-us>
+            <happy-clients :data="option_data.happy_clients_group"></happy-clients>
+            <who-we-are :data="option_data.who_we_are_group"></who-we-are>
+            <professional-approach :data="option_data.professional_approach_group"></professional-approach>
+            <we-can-deliver :data="option_data.weve_accomplished_group"></we-can-deliver>
+            <common-questions :data="option_data.frquently_asked_questions_group"></common-questions> 
+        </div>
     </div>
 </template>
 
@@ -30,6 +37,11 @@ export default {
         WeCanDeliver,
         CommonQuestions,
     },
+    computed : {
+        option_data() {
+            return this.$store.state.options;
+        }
+    }
 }
 </script>
 <style>

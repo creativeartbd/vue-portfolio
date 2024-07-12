@@ -1,53 +1,26 @@
 <template>
-    <section class="contact-address">
+    <section class="contact-address" v-if="data">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="contact-info">
-                        <p>Get in touch wiht us</p>
-                        <h2 class="mb-3">We're looking forward to hearing from you!</h2>
+                        <p v-if="data.section_top_title">{{ data.section_top_title }}</p>
+                        <h2 class="mb-3" v-if="data.section_title">{{ data.section_title }}</h2>
                         <div class="divide-separator"></div>
-                        <img src="@/assets/images/contact-us.svg" alt="" class="mt-5">
+                        <img v-if="data.section_image" :src="data.section_image" alt="" class="mt-5">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <get-started-form is-home="true"></get-started-form>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
+            <div class="row" v-if="data.contact_methods">
+                <div class="col-md-3" v-for="(methods, index) in data.contact_methods" :key="index">
                     <div class="contact-box">
-                        <i class="bi bi-envelope-open"></i>
+                        <i :class="methods.contact_icon"></i>
                         <div class="contact-details">
-                            <h5>Tab/click to Email</h5>
-                            <p>contact@cutoutpartner.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="contact-box">
-                        <i class="bi bi-whatsapp"></i>
-                        <div class="contact-details">
-                            <h5>Tab/click to Email</h5>
-                            <p>+8801671133639</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="contact-box">
-                        <i class="bi bi-telephone"></i>
-                        <div class="contact-details">
-                            <h5>Tab/click to Email</h5>
-                            <p>+8801671133639</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="contact-box">
-                        <i class="bi bi-skype"></i>
-                        <div class="contact-details">
-                            <h5>Tab/click to Email</h5>
-                            <p>babuout</p>
+                            <h5 v-if="methods.contact_name">{{ methods.contact_name}}</h5>
+                            <p v-if="methods.contact_address">{{ methods.contact_address }}</p>
                         </div>
                     </div>
                 </div>
@@ -56,9 +29,10 @@
     </section>
 </template>
 <script>
-import GetStartedForm from '@/components/form/GetStartedForm.vue';
 
+import GetStartedForm from '@/components/form/GetStartedForm.vue';
 export default {
+    props : ['data'],
     components : {
         GetStartedForm, 
     }

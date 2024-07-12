@@ -1,10 +1,17 @@
 <template>
     <div class="faq">
         <the-header-banner title="Faq"></the-header-banner>
-        <common-questions></common-questions>
-        <how-it-works></how-it-works>
-        <happy-clients></happy-clients>
-        <benefit-with-us></benefit-with-us>
+        <div class="d-flex justify-content-center" v-if="!option_data">
+            <div class="spinner-grow" role="status">
+                <span class="visually-hidden">{{ loadingText }}</span>
+            </div>
+        </div>
+        <div v-else>
+            <common-questions :data="option_data.frquently_asked_questions_group"></common-questions>
+            <how-it-works :data="option_data.how_it_works_group"></how-it-works>
+            <happy-clients :data="option_data.happy_clients_group"></happy-clients>
+            <benefit-with-us :data="option_data.benefit_of_partnering_with_us_group"></benefit-with-us>
+        </div>
     </div>
 </template>
 <script>
@@ -22,6 +29,11 @@ export default {
         HappyClients,
         CommonQuestions,
         HowItWorks
+    }, 
+    computed : {
+        option_data() {
+            return this.$store.state.options;
+        }
     }
 }
 </script>
