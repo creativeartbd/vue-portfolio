@@ -7,21 +7,18 @@
             </div>
         </div>
         <div v-else>
-            <pre>
-                {{ option_data }}
-            </pre>
-            <!-- <work-sample></work-sample> -->
+            <work-sample :data="option_data.work_sample_group"></work-sample>
         </div>
     </div>
 </template>
 <script>
 
 import TheHeaderBanner from '@/components/layout/TheHeaderBanner.vue';
-// import WorkSample from '@/components/pages/sample/WorkSample.vue';
+import WorkSample from '@/components/pages/sample/WorkSample.vue';
 export default {
     components : {
         TheHeaderBanner,
-        // WorkSample
+        WorkSample
     }, 
     computed : {
         option_data() {

@@ -1,12 +1,19 @@
 <template>
     <div class="about main-content">
         <the-header-banner title="About"></the-header-banner>
-        <who-we-are></who-we-are>
-        <professional-approach></professional-approach>
-        <benefit-with-us></benefit-with-us>
-        <happy-clients></happy-clients>
-        <professional-approach></professional-approach>
-        <we-can-deliver></we-can-deliver>
+        <div class="d-flex justify-content-center" v-if="!option_data">
+            <div class="spinner-grow" role="status">
+                <span class="visually-hidden">{{ loadingText }}</span>
+            </div>
+        </div>
+        <div v-else>
+            <who-we-are :data="option_data.who_we_are_group"></who-we-are>
+            <professional-approach :data="option_data.professional_approach_group"></professional-approach>
+            <benefit-with-us :data="option_data.benefit_of_partnering_with_us_group"></benefit-with-us>
+            <happy-clients :data="option_data.happy_clients_group"></happy-clients>
+            <professional-approach :data="option_data.professional_approach_group"></professional-approach>
+            <we-can-deliver :data="option_data.weve_accomplished_group"></we-can-deliver>
+        </div>
     </div>
 </template>
 
@@ -27,5 +34,10 @@ export default {
         HappyClients,
         WeCanDeliver
     },
+    computed : {
+        option_data() {
+            return this.$store.state.options;
+        }
+    }
 }
 </script>

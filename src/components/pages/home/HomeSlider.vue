@@ -1,50 +1,17 @@
 <template>
-    <div class="home-slider">
+    <div class="home-slider" v-if="data">
         <swiper :slides-per-view="1" :space-between="50" :autoplay="{
             delay: 2500,
         }" @swiper="onSwiper" @slideChange="onSlideChange" :modules="modules" :effect="'fade'">
-            <swiper-slide>
-                <img src="@/assets/images/slider-01.jpg" />
+            <swiper-slide v-for="(slider, index) in data.add_sliders" :key="index">
+                <img v-if="slider.slider_image" :src="slider.slider_image" />
                 <div class="container slider-container">
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="slider-content">
-                                <h2>Hello Your Photo Post Production Flawless
-                                    and Boost Your Business Effortlessly</h2>
-                                <p>16 Years of Experience | Discount on Bulk Volume</p>
-                                <button class="order-btn">Place an order Now!</button>
-                            </div>
-                        </div>
-                        <div class="col-md-6"></div>
-                    </div>
-                </div>
-            </swiper-slide>
-            <swiper-slide>
-                <img src="@/assets/images/slider-03.jpg" />
-                <div class="container slider-container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="slider-content">
-                                <h2>Hello Your Photo Post Production Flawless
-                                    and Boost Your Business Effortlessly</h2>
-                                <p>16 Years of Experience | Discount on Bulk Volume</p>
-                                <button class="order-btn">Place an order Now!</button>
-                            </div>
-                        </div>
-                        <div class="col-md-6"></div>
-                    </div>
-                </div>
-            </swiper-slide>
-            <swiper-slide>
-                <img src="@/assets/images/slider-02.jpg" />
-                <div class="container slider-container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="slider-content">
-                                <h2>Hello Your Photo Post Production Flawless
-                                    and Boost Your Business Effortlessly</h2>
-                                <p>16 Years of Experience | Discount on Bulk Volume</p>
-                                <button class="order-btn">Place an order Now!</button>
+                                <h2 v-if="slider.slider_title">{{ slider.slider_title}}</h2>
+                                <p v-if="slider.slider_content">{{ slider.slider_content }}</p>
+                                <button class="order-btn" v-if="slider.slider_button_text">{{ slider.slider_button_text }}</button>
                             </div>
                         </div>
                         <div class="col-md-6"></div>
@@ -64,12 +31,10 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 
 export default {
+    props : ['data'],
     components: {
         Swiper,
         SwiperSlide,
-    },
-    mounted() {
-        
     },
     setup() {
         const onSwiper = (swiper) => {

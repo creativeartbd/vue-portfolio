@@ -1,10 +1,10 @@
 <template>
-    <section class="sample-page">
+    <section class="sample-page" v-if="data">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 section-title text-center">
-                    <h2>{{ acfData.page_title }}</h2>
-                    <div v-html="acfData.page_sub_title"></div>
+                    <h2>{{ data.section_title }}</h2>
+                    <div v-html="data.section_sub_title"></div>
                     <div class="divide-separator divide-center"></div>
                 </div>
                 <div class="col-md-12">
@@ -23,19 +23,19 @@
                             @click="setActiveTab('All')"
                         >All</button>
                         <button
-                            v-for="(tab, index) in acfData.sample_work_tab"
+                            v-for="(tab, index) in data.sample_works"
                             :key="index"
                             class="nav-link"
-                            :class="{ active: activeTab === tab.tab_title }"
+                            :class="{ active: activeTab === tab.tab_name }"
                             :id="'v-pills-' + index + '-tab'"
                             data-bs-toggle="pill"
                             :data-bs-target="'#v-pills-' + index"
                             type="button"
                             role="tab"
                             :aria-controls="'v-pills-' + index"
-                            :aria-selected="activeTab === tab.tab_title"
-                            @click="setActiveTab(tab.tab_title)"
-                        >{{ tab.tab_title }}</button>
+                            :aria-selected="activeTab === tab.tab_name"
+                            @click="setActiveTab(tab.tab_name)"
+                        >{{ tab.tab_name }}</button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
                         <div
@@ -55,10 +55,10 @@
                             </div>
                         </div>
                         <div
-                            v-for="(tab, index) in acfData.sample_work_tab"
+                            v-for="(tab, index) in data.sample_works"
                             :key="index"
                             class="tab-pane fade"
-                            :class="{ 'show active': activeTab === tab.tab_title }"
+                            :class="{ 'show active': activeTab === tab.tab_name }"
                             :id="'v-pills-' + index"
                             role="tabpanel"
                             :aria-labelledby="'v-pills-' + index + '-tab'"
@@ -103,7 +103,7 @@
 
 <script>
 export default {
-    props : ['acfData'], 
+    props : ['data'], 
     data() {
         return {
             activeTab: 'All',
@@ -158,11 +158,9 @@ export default {
         }
     },
     mounted() {
-        const acfData = this.acfData;
         let uniqueIndex = 0; // Initialize a counter for unique indices
-
-        if (acfData && acfData.sample_work_tab && Array.isArray(acfData.sample_work_tab)) {
-            acfData.sample_work_tab.forEach(tab => {
+        if (this.data && this.data.sample_works && Array.isArray(this.data.sample_works)) {
+            this.data.sample_works.forEach(tab => {
                 tab.tab_images.forEach(image => {
                     image.key = uniqueIndex++; // Assign a unique index to each image
                     this.allImages.push(image); // Add the image to allImages array
@@ -200,6 +198,7 @@ export default {
     margin-bottom: 15px;
     cursor: pointer;
     margin-bottom: 20px;
+    width: 327px;
 }
 
 .single-sample img {

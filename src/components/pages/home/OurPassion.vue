@@ -1,29 +1,29 @@
 <template>
-    <div class="our-passion">
+    <div class="our-passion" v-if="data">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center section-title">
-                    <h2>We're Passionate</h2>
-                    <p>Explore our suite of powerful software solutions.</p>
+                    <h2 v-if="data.section_title">{{ data.section_title }}</h2>
+                    <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
                     <span class="divider-separator"></span>
                 </div>
                 <div class="col-md-4">
                     <div class="out-passion-image">
-                        <h3>Check this image</h3>
-                        <img src="@/assets/images/Pilot_Lifestyle_09_2.jpg" alt="">
+                        <h3 v-if="data.left_box_title">{{ data.left_box_title }}</h3>
+                        <img v-if="data.left_box_image" :src="data.left_box_image" alt="">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="our-passion-box">
-                        <h3 class="mb-4">Our Specialties</h3>
-                        <p>I would like to give you a unique photography experience, built to serve you best and capture your special moments for you and your families creatively and beautifully.</p>
-                        <button class="btn btn-default mt-2">See All</button>
+                        <h3 class="mb-4" v-if="data.middle_box_title">{{  data.middle_box_title  }}</h3>
+                        <p v-if="data.middle_box_content">{{ data.middle_box_content }}</p>
+                        <button class="btn btn-default mt-2">{{ data.middle_box_button_text }}</button>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="out-passion-image">
-                        <h3>Download Image</h3>
-                        <img src="@/assets/images/our-model-2.jpg" alt="">
+                        <h3 v-if="data.right_box_title">{{ data.right_box_title }}</h3>
+                        <img v-if="data.right_box_image" :src="data.right_box_image" alt="">
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
 </template>
 <script>
 export default {
-    
+    props : ['data']
 }
 </script>
 <style scoped>
