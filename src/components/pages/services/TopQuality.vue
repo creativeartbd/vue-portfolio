@@ -1,17 +1,24 @@
 <template>
-    <section class="top-quality-services">
+    <section class="top-quality-services" v-if="data">
         <div class="container">
             <div class="banner-wrapper">  
                 <div class="banner-text">
-                    <h2 class="mb-3">Top Quality Photo Processing Services</h2>
-                    <p>The clipping path service is a us based post product house. When it comes to solving any type of photo editing complication, We're Game!</p>
+                    <h2 class="mb-3" v-if="data.banner_title">{{ data.banner_title }}</h2>
+                    <p v-if="data.banner_content">{{ data.banner_content}}</p>
                     <div class="button-group">
-                        <button class="btn btn-default free-trial">Free Trial</button>
-                        <button class="btn btn-default get-started">Get Started</button>
+
+                        <router-link :to="data.free_trial_button_link ? data.free_trial_button_link : null" v-if="data.free_trial_button_text" class="btn btn-default free-trial">
+                            {{ data.free_trial_button_text }}
+                        </router-link>
+
+                        <router-link :to="data.get_started_button_link ? data.get_started_button_link : null" v-if="data.get_started_button_text" class="btn btn-default get-started">
+                            {{ data.get_started_button_text }}
+                        </router-link>
+                        
                     </div>
                 </div>
-                <div class="banner-image">
-                    <img src="https://cutoutpartner.com/wp-content/uploads/2021/09/012921-64903.png" width="100%" />
+                <div class="banner-image" v-if="data.banner_background_image">
+                    <img :src="data.banner_background_image" width="100%" />
                 </div>
             </div>
         </div>
@@ -19,7 +26,7 @@
 </template>
 <script>
 export default {
-    
+    props : ['data']
 }
 </script>
 <style scoped>

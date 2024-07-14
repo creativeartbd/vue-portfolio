@@ -4,5 +4,9 @@ import router from './router'
 import store from './store'
 import './assets/css/main.css'
 import './assets/css/responsive.css'
+import PageLoader from './components/form/PageLoader.vue'
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App);
+
+app.component('PageLoader', PageLoader); // Register the PageLoader component globally
+app.use(store).use(router).mount('#app');

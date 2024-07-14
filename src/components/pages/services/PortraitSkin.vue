@@ -1,37 +1,20 @@
 <template>
-    <section class="portrait-skin">
+    <section class="portrait-skin" v-if="data">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-
                     <div class="section-title">
-                        <h2>Portrait Skin Smoothing</h2>
-                        <p>With our portrain skin smothing service, we can  even out skin tone and texture for a flawless finish.</p>
+                        <h2 v-if="data.section_title">{{ data.section_title }}</h2>
+                        <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
                         <div class="divide-separator"></div>
                     </div>
-                
-                    <ul>
-                        <li>Color correction.</li>
-                        <li>Make-up improvement.</li>
-                        <li>Face beautiy retouching.</li>
-                        <li>Hair retouching</li>
-                        <li>Color correction.</li>
-                        <li>Make-up improvement.</li>
-                        <li>Face beautiy retouching.</li>
-                        <li>Hair retouching</li>
-                    </ul>
+                    <div v-if="data.section_content" v-html="data.section_content"></div>
 
-                    <!-- <div class="portrait-comments">
-                        Top motch customer servie, retourching done to suit your personal taste. Say something about having a fast turnaround because clietns like that
-                    </div> -->
-
-                    <div class="animated-border-quote">
-                        <blockquote>
-                            <p>The world always seems brighter when you’ve just made something that wasn’t there before.</p>
-                            <cite>Neil Gaiman</cite>
+                    <div class="animated-border-quote" v-if="data.section_single_review" >
+                        <blockquote v-html=" data.section_single_review">
+                            
                         </blockquote>
                     </div>
-
                 </div>
                 <div class="col-md-4">
                     <div class="portrait-skin-image">
@@ -65,6 +48,7 @@
 <script>
 import { ImgComparisonSlider } from '@img-comparison-slider/vue';
 export default {
+    props : ['data'],
     data() {
         return {
             beforeImg : 'https://ephotovn.com/wp-content/uploads/2023/02/Richland_Unretouched-09-2022_0471.jpg', 
@@ -102,7 +86,6 @@ export default {
 
 .portrait-skin ul li {
     list-style-position: inside;
-    list-style-type: square;
     line-height: 200%;
 }
 
@@ -143,7 +126,7 @@ export default {
 }
 .animated-border-quote blockquote {
   background-color: #fff;
-  border: solid 2px #00bcd4;
+  border: solid 15px #00bcd4;
   display: inline-block;
   margin: 0 3rem;
   padding: 1em;
@@ -223,11 +206,11 @@ export default {
 
 @keyframes shadows {
   0% {
-    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.75);
     transform: scale(0.95);
   }
   100% {
-    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.75);
     transform: scale(1);
   }
 }

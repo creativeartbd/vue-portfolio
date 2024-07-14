@@ -1,8 +1,8 @@
 <template>
     <div class="call-in-action">
         <div class="container">
-            <page-loader v-if="!isLoading"></page-loader>
-            <div class="row" v-else>
+            <!-- <page-loader v-if="!isLoading"></page-loader> -->
+            <div class="row" v-if="option_data">
                 <div class="col-md-4">
                     <h2 v-if="option_data.action_title">{{ option_data.action_title }}</h2>
                 </div>
@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import PageLoader from '@/components/form/PageLoader.vue'
+// import PageLoader from '@/components/form/PageLoader.vue'
 export default {
     computed : {
         option_data() {
@@ -28,12 +28,6 @@ export default {
             return this.$store.state.isLoading; // Accessing isLoading directly from the state
         }
     },
-    components : {
-        PageLoader,
-    },
-    // mounted() {
-    //     this.$store.dispatch('getOptions');
-    // },
 }
 </script>
 <style scoped>

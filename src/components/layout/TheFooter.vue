@@ -1,17 +1,26 @@
 <template>
     <call-in-action :cta-data="ctaData" v-if="whichPage !== '/quotation' "></call-in-action>
-    <div class="footer">
-        <page-loader v-if="!isLoading"></page-loader>
-        <div class="container" v-else>
+    <div class="footer" v-if="option_data">
+        <!-- <page-loader v-if="!isLoading"></page-loader> -->
+        <div class="container" v-if="option_data">
             <div class="footer-top">
                 <div class="row">
                     <div class="col-md-3">
                         <img :src="option_data.footer_logo" alt="" class="logo" v-if="option_data.footer_logo">
-                        <p v-if="option_data.footer_about_us">{{ option_data.footer_about_us }}</p>
+                        <div v-if="option_data.footer_about_us" v-html="option_data.footer_about_us"></div>
                     </div>
-                    <div class="col-md-3" v-for="(link, index) in option_data.footer_links" :key="index">
+                    <div class="col-md-3" v-for="(link, index) in option_data.footer_group.footer_links" :key="index">
                         <h3>{{ link.link_title }}</h3>
-                        <div class="footer-link" v-html="link.link_content"></div>
+                        <div class="footer-link" v-if="link.is_link == 0">
+                            <ul>
+                                <li v-for="(footer_menu, footer_menu_index) in link.link_content" :key="footer_menu_index">
+                                    <router-link :to="footer_menu.link_location ? footer_menu.link_location : ''">{{ footer_menu.link_text }}</router-link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-link" v-else>
+                            <div v-if="link.link_content_full" v-html="link.link_content_full"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -19,11 +28,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="footer-bottom-content">
-                            <div v-if="option_data.footer_bottom_left_text" v-html="option_data.footer_bottom_left_text"></div>
-                            <div class="footer-social" v-if="option_data.footer_social">
-                                <i v-for="(social, index) in option_data.footer_social" :key="index" :class="social.social_icon"></i>
+                            <div v-if="option_data.footer_group.footer_bottom_left_text" v-html="option_data.footer_group.footer_bottom_left_text"></div>
+
+                            <div class="footer-social" v-if="option_data.footer_group.footer_social">
+                                <router-link :to="social.location ? social.location : ''" v-for="(social, index) in option_data.footer_group.footer_social" :key="index">
+                                    <i :class="social.social_icon"></i>
+                                </router-link>
                             </div>
-                            <p class="copyright" v-if="option_data.footer_bottom_right_text" v-html="option_data.footer_bottom_right_text"></p>
+
+                            <p class="copyright" v-if="option_data.footer_group.footer_bottom_right_text" v-html="option_data.footer_group.footer_bottom_right_text"></p>
                         </div>
                     </div>
                 </div>
@@ -33,7 +46,7 @@
 </template>
 
 <script>
-import PageLoader from '@/components/form/PageLoader.vue'
+// import PageLoader from '@/components/form/PageLoader.vue'
 import CallInAction from '@/components/layout/CallInAction.vue'
 export default {
     data() {
@@ -42,7 +55,7 @@ export default {
         }
     },
     components : {
-        PageLoader, 
+        // PageLoader, 
         CallInAction
     },
     computed : {

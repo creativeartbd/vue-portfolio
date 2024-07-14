@@ -2,9 +2,7 @@
     <div class="about main-content">
         <the-header-banner title="About"></the-header-banner>
         <div class="d-flex justify-content-center" v-if="!option_data">
-            <div class="spinner-grow" role="status">
-                <span class="visually-hidden">{{ loadingText }}</span>
-            </div>
+            <div class="loader"></div>
         </div>
         <div v-else>
             <who-we-are :data="option_data.who_we_are_group"></who-we-are>

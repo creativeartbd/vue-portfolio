@@ -2,9 +2,7 @@
     <div class="contact main-content">
         <the-header-banner title="Contact"></the-header-banner>
         <div class="d-flex justify-content-center" v-if="!option_data">
-            <div class="spinner-grow" role="status">
-                <span class="visually-hidden">{{ loadingText }}</span>
-            </div>
+            <page-loader></page-loader>
         </div>
         <div v-else>
             <!-- <pre>{{ option_data }}</pre> -->
