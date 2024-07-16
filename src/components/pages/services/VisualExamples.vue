@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                     <div class="visual-examples-wrapper">
                         <div class="grid-wrapper">
-                            <div class="same-size">
+                            <div class="same-size ve-8">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -32,7 +32,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="tall second-size">
+                            <div class="tall second-size ve-1">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -52,7 +52,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="tall wide third-size">
+                            <div class="tall wide third-size ve-2">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -72,7 +72,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="same-size">
+                            <div class="same-size ve-3">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -92,7 +92,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="same-size">
+                            <div class="same-size ve-4">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -112,7 +112,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="same-size">
+                            <div class="same-size ve-5">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -132,7 +132,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="same-size">
+                            <div class="same-size ve-6">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -152,7 +152,7 @@
                                     <!-- eslint-enable -->
                                 </ImgComparisonSlider>
                             </div>
-                            <div class="same-size">
+                            <div class="same-size ve-7">
                                 <ImgComparisonSlider class="coloured-slider">
                                     <!-- eslint-disable -->
                                     <figure slot="first" class="before">
@@ -216,6 +216,7 @@ export default {
 	grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
 	grid-auto-rows: auto;
 	grid-auto-flow: dense;
+    cursor: pointer;
 }
 .grid-wrapper .wide {
 	grid-column: span 2;
@@ -243,6 +244,75 @@ export default {
 }
 .bf-circle i {
     color: #fff;
+}
+
+.before figcaption,
+.after figcaption {
+    display: none;
+}
+
+.grid-wrapper .ve-1:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-1:hover .after figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-2:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-2:hover .after figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-3:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-3:hover .after figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-4:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-4:hover .after figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-5:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-5:hover .after figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-6:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-6:hover .after figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-7:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-7:hover .after figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-8:hover .before figcaption {
+    display: block;
+}
+
+.grid-wrapper .ve-8:hover .after figcaption {
+    display: block;
 }
 
 .before figcaption,

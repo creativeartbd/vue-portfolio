@@ -176,7 +176,7 @@ export default {
 }
 .sample-work .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     background-color: #00bcd4;
-    background-image: linear-gradient(90deg, #00bcd4 0%, #0dd1ff 100%);
+    /* background-image: linear-gradient(90deg, #00bcd4 0%, #0dd1ff 100%); */
     border : none;
 }
 
@@ -280,4 +280,9 @@ export default {
     font-size: 30px;
     cursor: pointer;
 }
+
+.divide-separator {
+    background: linear-gradient(to right, #5b5b5b, #dddddd);
+}
+
 </style>

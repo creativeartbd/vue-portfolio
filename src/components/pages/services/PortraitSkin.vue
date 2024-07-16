@@ -123,6 +123,7 @@ export default {
   display: inline-block;
   margin: 1em;
   overflow: hidden;
+  margin-top: 50px;
 }
 .animated-border-quote blockquote {
   background-color: #fff;
@@ -131,6 +132,7 @@ export default {
   margin: 0 3rem;
   padding: 1em;
   position: relative;
+  text-align: center;
 
 }
 .animated-border-quote blockquote:before {
