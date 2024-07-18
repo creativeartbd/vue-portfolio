@@ -225,7 +225,8 @@ input {
 }
 
 img {
-    width : 100%;
+    width : auto;
+    max-width: 100%;
 }
 
 .swiper-pagination-bullet-active {

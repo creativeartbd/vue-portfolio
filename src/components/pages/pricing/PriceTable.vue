@@ -26,7 +26,7 @@
                                     <div class="price-table">
                                         <img v-if="pricing.pricing_image" :src="pricing.pricing_image"/>
                                         <div v-if="pricing.pricing_details" v-html="pricing.pricing_details"></div>
-                                        <router-link :to="pricing.free_trial_button_location" class="btn btn-dark-default free-trial">{{ pricing.free_tiral_button_text }}</router-link>
+                                        <router-link :to="pricing.free_trial_button_location" class="free-trial">{{ pricing.free_tiral_button_text }}</router-link>
                                         <router-link :to="pricing.order_now_button_location" class="btn btn-default order-now">{{ pricing.order_now_button_text }}</router-link>
                                     </div>
                                 </div>
@@ -95,6 +95,8 @@ export default {
 .pricing-table .free-trial {
     margin : 20px 0;
     box-shadow: none;
+    display: block;
+    color: #00bcd4;
 }
 
 .pricing-table .price-options ul li {
@@ -142,7 +144,7 @@ export default {
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #c7c7c7;
+    border-bottom: 1px solid #00bcd4;
 }
 
 .pricing-tab .nav-link {
@@ -153,7 +155,7 @@ export default {
 .pricing-tab .nav-link.active {
     color: #fff;
     background-color: #00bcd4;
-    background-image: linear-gradient(90deg, #00bcd4 0%, #0dd1ff 100%);
+    /* background-image: linear-gradient(90deg, #00bcd4 0%, #0dd1ff 100%); */
 }
 
 </style>

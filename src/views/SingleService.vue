@@ -10,10 +10,9 @@
             <benefit-with-us color="#fbfbfb" :data="option_data.benefit_of_partnering_with_us_group"></benefit-with-us>
             <happy-clients :data="option_data.happy_clients_group"></happy-clients>
             <get-started :data="option_data.get_started_with_our_services_for_free_group"></get-started>
-            <how-it-works color="#fff" :data="option_data.how_it_works_group"></how-it-works>
             <portrait-skin :data="option_data.portrait_skin_smoothing_group"></portrait-skin>
             <how-it-works color="#fbfbfb" :data="option_data.how_it_works_group"></how-it-works>
-            <common-questions color="#fbfbfb" :data="option_data.frquently_asked_questions_group"></common-questions>
+            <common-questions color="#fff" :data="option_data.frquently_asked_questions_group"></common-questions>
         </div>
     </div>
 </template>

@@ -57,7 +57,6 @@ export default {
     position : relative;
     margin-bottom : 50px;
     display: flex;
-    align-items: center;
 }
 
 .how-it-works-info {
@@ -68,11 +67,25 @@ export default {
     margin-bottom: 10px;
 }
 
+.how-it-works-list:nth-child(1) .how-it-works-number {
+    background-color: #a0c747;
+    box-shadow: 0px 6px 12px 0px rgb(218 255 135);
+}
+
+.how-it-works-list:nth-child(2) .how-it-works-number {
+    background-color: #2828d4;
+    box-shadow: 0px 6px 12px 0px rgb(169 169 252);
+}
+
+.how-it-works-list:nth-child(3) .how-it-works-number {
+    background-color: #f89748;
+    box-shadow: 0px 6px 12px 0px rgb(255 215 183);
+}
+
 .how-it-works-number {
     width: 75px;
     height: 75px;
     border-radius: 50%;
-    background-color: #a0c747;
     text-align: center;
     display: flex;
     align-items: center;
