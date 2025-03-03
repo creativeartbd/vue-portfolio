@@ -17,7 +17,8 @@ a  {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color : #46465a;
+    /* color : #46465a; */
+    color : #000;
 }
 
 h2 {
@@ -96,8 +97,7 @@ section p {
 }
 
 .btn-default {
-   
-    background: #00bcd4;
+    background-color: #00364b;
     border-radius: 999px;
     box-shadow: #00bcd4 0 10px 20px -10px;
     box-sizing: border-box;
@@ -108,7 +108,7 @@ section p {
     line-height: 24px;
     opacity: 1;
     outline: 0 solid transparent;
-    padding: 14px 50px;
+    padding: 12px 40px;
     -moz-user-select: none;
     user-select: none;
     -webkit-user-select: none;
@@ -122,7 +122,7 @@ section p {
 
 .btn-default:hover {
     border: none;
-    background-color: #00364b;
+    background: #00bcd4;
     color: #fff;
     -webkit-box-shadow: -11px 6px 78px -11px rgba(0,0,0,0.38);
     -moz-box-shadow: -11px 6px 78px -11px rgba(0,0,0,0.38);
@@ -343,6 +343,7 @@ img {
 
 .dropdown-container li {
     padding: 3px 0;
+    position: relative;
 }
 
 .dropdown-container li a{
@@ -358,6 +359,42 @@ img {
     /* outline: 2px solid #dcdfff; */
     width : 100%;
 }
+
+.spinner-grow {
+    margin-top : 15px; 
+    margin-bottom : 15px;
+}
+
+.pricing-table-list a  {
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.pricing-table-list ul li {
+    position: relative;
+    margin-left: 18px;
+    margin-bottom: 5px;
+}
+
+.pricing-table-list ul li::after {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 30%;
+    width: 6px;
+    height: 11px;
+    border: solid #00bcd4;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.pricing-table .price-table,
+.price-table-heading h2,
+p {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
 
 /* HTML: <div class="loader"></div> */
 .loader {

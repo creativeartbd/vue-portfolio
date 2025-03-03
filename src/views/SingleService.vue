@@ -5,6 +5,7 @@
             <page-loader></page-loader>
         </div>
         <div v-else>
+            <pre>{{ option_data.our_services_group }}</pre>
             <top-quality :data="option_data.single_services_banner_group"></top-quality>
             <visual-examples></visual-examples>
             <benefit-with-us color="#fbfbfb" :data="option_data.benefit_of_partnering_with_us_group"></benefit-with-us>

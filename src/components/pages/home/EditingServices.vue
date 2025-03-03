@@ -15,22 +15,39 @@
                 <div class="col-12">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation" v-for="(tabItem, index) in images" :key="index">
-                            <button class="nav-link" :class="{ 'active': index === 0 }" :id="`tab-${index}`"
-                                data-bs-toggle="tab" :data-bs-target="`#content-${index}`" type="button" role="tab"
-                                :aria-controls="`content-${index}`" aria-selected="index === 0">
+                            <button
+                                class="nav-link"
+                                :class="{ active: index === 0 }"
+                                :id="`tab-${index}`"
+                                data-bs-toggle="tab"
+                                :data-bs-target="`#content-${index}`"
+                                type="button"
+                                role="tab"
+                                :aria-controls="`content-${index}`"
+                                aria-selected="index === 0"
+                            >
                                 {{ tabItem.tab_name }}
                             </button>
                         </li>
                     </ul>
 
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade" :class="{ 'show active': index === 0 }" :id="`content-${index}`"
-                            role="tabpanel" :aria-labelledby="`tab-${index}`" v-for="(tabItem, index) in images"
-                            :key="`content-${index}`">
+                        <div
+                            class="tab-pane fade"
+                            :class="{ 'show active': index === 0 }"
+                            :id="`content-${index}`"
+                            role="tabpanel"
+                            :aria-labelledby="`tab-${index}`"
+                            v-for="(tabItem, index) in images"
+                            :key="`content-${index}`"
+                        >
                             <div class="row">
                                 <div class="col-md-8">
-                                    <div class="ods-mini-wrapper" v-for="(mini_image, mini_index) in tabItem.tab_images"
-                                        :key="mini_index">
+                                    <div
+                                        class="ods-mini-wrapper"
+                                        v-for="(mini_image, mini_index) in tabItem.tab_images"
+                                        :key="mini_index"
+                                    >
                                         <div class="ods-mini-img">
                                             <img :src="mini_image.mini_image" @click="handleClick(mini_image)" />
                                             <h6 @click="handleClick(mini_image)">Portrait</h6>
@@ -39,7 +56,6 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="before-after">
-                                       
                                         <ImgComparisonSlider class="coloured-slider">
                                             <!-- eslint-disable -->
                                             <figure slot="first" class="before">
@@ -57,10 +73,9 @@
                                                     <i class="bi bi-caret-right-fill"></i>
                                                 </div>
                                             </div>
-                                            
+
                                             <!-- eslint-enable -->
                                         </ImgComparisonSlider>
-
                                     </div>
 
                                     <div class="before-after-bottom">
@@ -78,7 +93,7 @@
 </template>
 
 <script>
-import { ImgComparisonSlider } from '@img-comparison-slider/vue';
+import { ImgComparisonSlider } from "@img-comparison-slider/vue";
 export default {
     components: {
         ImgComparisonSlider,
@@ -90,56 +105,55 @@ export default {
             sectionTitle: null,
             sectionSubtitle: null,
             beforeImg: null,
-            afterImg: null, 
-        }
+            afterImg: null,
+        };
     },
     created() {
         // Assuming you have the menu location and endpoint set up on your WordPress site
-        const siteUrl = 'https://cutoutpartner-api.com/';
-        const restApiEndpoint = 'wp-json/wp/v2/pages/531?acf_format=standard'; // Replace with the desired REST API endpoint
-        const username = 'dsa_clippingpathland';
+        const siteUrl = "https://cutoutpartner-api.com/";
+        const restApiEndpoint = "wp-json/wp/v2/pages/531?acf_format=standard"; // Replace with the desired REST API endpoint
+        const username = "dsa_clippingpathland";
 
         // Replace with your generated application password
-        const applicationPassword = 'NZeL v7Ey s8vx mXig Z4FC lyHc';
+        const applicationPassword = "NZeL v7Ey s8vx mXig Z4FC lyHc";
 
         const headers = new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic ' + btoa(username + ':' + applicationPassword),
+            "Content-Type": "application/json",
+            Authorization: "Basic " + btoa(username + ":" + applicationPassword),
         });
 
         // Make a GET request to the WordPress REST API
         fetch(`${siteUrl}${restApiEndpoint}`, {
-            method: 'GET',
+            method: "GET",
             headers: headers,
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            this.isDataLoaded = true;
-            this.sectionTitle = data.acf.section_title;
-            this.images = data.acf.tab_name.tab_repeater;
-            this.handleClick(this.images[0].tab_images[0]);
-        })
-        .catch(error => {
-            this.isDataLoaded = false;
-            console.error('Error fetching data:', error);
-        });
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                this.isDataLoaded = true;
+                this.sectionTitle = data.acf.section_title;
+                this.images = data.acf.tab_name.tab_repeater;
+                this.handleClick(this.images[0].tab_images[0]);
+            })
+            .catch((error) => {
+                this.isDataLoaded = false;
+                console.error("Error fetching data:", error);
+            });
     },
     methods: {
         handleClick(mini_image) {
             this.beforeImg = mini_image.before_image;
             this.afterImg = mini_image.after_image;
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style scoped>
-
 :host(:focus) {
     outline: none !important;
 }
@@ -148,13 +162,13 @@ export default {
     padding-top: 100px;
     padding-bottom: 50px;
     background-color: #fff;
-    background-image: url('../../../assets/images/background.png');
+    background-image: url("../../../assets/images/background.png");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-color: #f5feff;
     background-color: transparent;
-    background-image: linear-gradient(90deg, #c3f6ff 0%, #DFDDFF 100%);
+    background-image: linear-gradient(90deg, #c3f6ff 0%, #dfddff 100%);
 }
 
 .editing-services .nav-item button {
@@ -166,15 +180,15 @@ export default {
     border-radius: 3px;
     margin-bottom: 15px;
     background-color: #fff;
-    padding : 3px;
+    padding: 3px;
 }
 
 .editing-services .ods-mini-img img {
     transition: transform 0.4s ease-in-out;
     margin-bottom: 10px;
     object-fit: cover;
-    width : 100%;
-    height : 156px;
+    width: 100%;
+    height: 156px;
 }
 
 .editing-services .ods-mini-img img:hover {
@@ -182,7 +196,7 @@ export default {
 }
 
 .editing-services .ods-mini-img:hover h6 {
-    color : #00bcd4;
+    color: #00bcd4;
     cursor: pointer;
 }
 
@@ -212,7 +226,7 @@ export default {
     right: 12px;
 }
 
-.before-after{
+.before-after {
     box-shadow: 0px 13px 38px 0px rgba(59.000000000000014, 190, 255, 0.16);
     padding: 0;
     cursor: pointer;
@@ -222,7 +236,7 @@ export default {
 .coloured-slider {
     --divider-color: rgba(255, 255, 255, 1);
     --default-handle-color: rgba(255, 255, 255, 1);
-    --divider-width : 3px;
+    --divider-width: 3px;
 }
 
 .bf-circle {
@@ -230,7 +244,7 @@ export default {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    box-shadow: 0 0 12px rgba(51,51,51,.5);
+    box-shadow: 0 0 12px rgba(51, 51, 51, 0.5);
     position: relative;
     display: flex;
     justify-content: center;
@@ -241,7 +255,7 @@ export default {
 }
 
 .bf-circle i {
-    color : #fff;
+    color: #fff;
 }
 
 .before-after-bottom {
@@ -264,8 +278,7 @@ export default {
 .ods-mini-wrapper {
     width: 156px;
     margin-right: 15px;
-    padding : 0;
+    padding: 0;
     display: inline-block;
 }
-
 </style>

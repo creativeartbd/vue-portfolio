@@ -1,12 +1,12 @@
 <template>
-    <div class="get-started">
+    <div class="get-started" :style="{ backgroundColor: color }">
         <div class="container">
             <div class="row">
                 <div class="col-md-6" v-if="data">
                     <div class="get-started-details">
                         <div class="section-title">
                             <h2 v-if="data.section_title">{{ data.section_title }}</h2>
-                            <p  v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
+                            <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
                         </div>
                         <div v-if="data.section_description" v-html="data.section_description"></div>
                     </div>
@@ -19,27 +19,26 @@
     </div>
 </template>
 <script>
-import GetStartedForm from '@/components/form/GetStartedForm.vue';
+import GetStartedForm from "@/components/form/GetStartedForm.vue";
 export default {
-    props : ['data'],
-    components : {
-        GetStartedForm
-    }, 
-    mounted() {
-    }
-}
+    props: ["data", "color"],
+    components: {
+        GetStartedForm,
+    },
+    mounted() {},
+};
 </script>
 <style>
 .get-started {
     padding: 20px 10px 10px;
-    padding-top : 100px;
-    padding-bottom : 100px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     background-color: #fbfbfb;
 }
 
 .get-started ul {
-    padding-left : 0;
-    margin-top : 20px;
+    padding-left: 0;
+    margin-top: 20px;
 }
 
 .get-started ul li {
@@ -50,6 +49,6 @@ export default {
 }
 
 .get-started-details {
-    padding-right : 50px;
+    padding-right: 50px;
 }
 </style>

@@ -1,20 +1,20 @@
 <template>
     <div class="main-wrapper">
         <the-header></the-header>
-            <router-view></router-view>
+        <router-view></router-view>
         <the-footer></the-footer>
     </div>
 </template>
 
 <script>
-import TheHeader from './components/layout/TheHeader.vue';
-import TheFooter from './components/layout/TheFooter.vue';
+import TheHeader from "./components/layout/TheHeader.vue";
+import TheFooter from "./components/layout/TheFooter.vue";
 export default {
     components: {
-        TheHeader, 
-        TheFooter
-    }, 
-}
+        TheHeader,
+        TheFooter,
+    },
+};
 </script>
 
-<style scoped></style>./components/layout/TheHeader.vue
+<style scoped></style>
