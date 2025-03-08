@@ -7,6 +7,7 @@
                         <div class="section-title">
                             <h2 v-if="data.section_title">{{ data.section_title }}</h2>
                             <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
+                            <div class="divide-separator divide-center"></div>
                         </div>
                         <div v-if="data.section_description" v-html="data.section_description"></div>
                     </div>

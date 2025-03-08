@@ -1,66 +1,66 @@
 <template>
-  <section class="portrait-skin" v-if="data">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="section-title">
-            <h2 v-if="data.section_title">{{ data.section_title }}</h2>
-            <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
-            <div class="divide-separator"></div>
-          </div>
+    <section class="portrait-skin" v-if="data" :style="{ backgroundColor: bgColor }">
+        >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="section-title">
+                        <h2 v-if="data.section_title">{{ data.section_title }}</h2>
+                        <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
+                        <div class="divide-separator"></div>
+                    </div>
 
-          <div v-if="data.section_content" v-html="data.section_content"></div>
-          <div class="animated-border-quote" v-if="data.section_single_review">
-            <blockquote v-html="data.section_single_review"></blockquote>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="portrait-skin-image">
-            <ImgComparisonSlider>
-              <!-- eslint-disable -->
-              <figure slot="first" class="before">
-                <img slot="first" :src="beforeImg" />
-                <figcaption>Before</figcaption>
-              </figure>
-              <figure slot="second" class="after">
-                <img slot="second" :src="afterImg" />
-                <figcaption>After</figcaption>
-              </figure>
-              <div slot="handle">
-                <div class="bf-circle">
-                  <i class="bi bi-caret-left-fill"></i>
-                  <i class="bi bi-caret-right-fill"></i>
+                    <div v-if="data.section_content" v-html="data.section_content"></div>
+                    <div class="animated-border-quote" v-if="data.section_single_review">
+                        <blockquote v-html="data.section_single_review"></blockquote>
+                    </div>
                 </div>
-              </div>
-              <!-- eslint-enable -->
-            </ImgComparisonSlider>
+                <div class="col-md-4">
+                    <div class="portrait-skin-image">
+                        <ImgComparisonSlider>
+                            <!-- eslint-disable -->
+                            <figure slot="first" class="before">
+                                <img slot="first" :src="beforeImg" />
+                                <figcaption>Before</figcaption>
+                            </figure>
+                            <figure slot="second" class="after">
+                                <img slot="second" :src="afterImg" />
+                                <figcaption>After</figcaption>
+                            </figure>
+                            <div slot="handle">
+                                <div class="bf-circle">
+                                    <i class="bi bi-caret-left-fill"></i>
+                                    <i class="bi bi-caret-right-fill"></i>
+                                </div>
+                            </div>
+                            <!-- eslint-enable -->
+                        </ImgComparisonSlider>
 
-            <div class="button-group">
-              <button class="place-order">Place an order</button>
-              <button class="free-trial">Have a free trial</button>
+                        <div class="button-group">
+                            <button class="place-order">Place an order</button>
+                            <button class="free-trial">Have a free trial</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </template>
 
 <script>
 import { ImgComparisonSlider } from "@img-comparison-slider/vue";
 export default {
-  props: ["data"],
-  data() {
-    return {
-      beforeImg:
-        "https://ephotovn.com/wp-content/uploads/2023/02/Richland_Unretouched-09-2022_0471.jpg",
-      afterImg:
-        "https://ephotovn.com/wp-content/uploads/2023/02/Richland_Unretouched-09-2022_047.jpg",
-    };
-  },
-  components: {
-    ImgComparisonSlider,
-  },
+    props: ["data", "color"],
+    data() {
+        return {
+            bgColor: this.color,
+            beforeImg: "https://ephotovn.com/wp-content/uploads/2023/02/Richland_Unretouched-09-2022_0471.jpg",
+            afterImg: "https://ephotovn.com/wp-content/uploads/2023/02/Richland_Unretouched-09-2022_047.jpg",
+        };
+    },
+    components: {
+        ImgComparisonSlider,
+    },
 };
 </script>
 <style scoped>
@@ -155,7 +155,8 @@ export default {
     border-radius: 25px;
     color: #fff;
     padding: 12px 0;
-    box-shadow: #45465a 0 10px 20px -10px;
+    font-size: 15px;
+    /* box-shadow: #45465a 0 10px 20px -10px; */
 }
 
 .place-order {

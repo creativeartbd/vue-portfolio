@@ -7,7 +7,7 @@
                         <p v-if="data.section_top_title">{{ data.section_top_title }}</p>
                         <h2 class="mb-3" v-if="data.section_title">{{ data.section_title }}</h2>
                         <div class="divide-separator"></div>
-                        <img v-if="data.section_image" :src="data.section_image" alt="" class="mt-5">
+                        <img v-if="data.section_image" :src="data.section_image" alt="" class="mt-5" />
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -19,7 +19,7 @@
                     <div class="contact-box">
                         <i :class="methods.contact_icon"></i>
                         <div class="contact-details">
-                            <h5 v-if="methods.contact_name">{{ methods.contact_name}}</h5>
+                            <h6 v-if="methods.contact_name">{{ methods.contact_name }}</h6>
                             <p v-if="methods.contact_address">{{ methods.contact_address }}</p>
                         </div>
                     </div>
@@ -29,27 +29,26 @@
     </section>
 </template>
 <script>
-
-import GetStartedForm from '@/components/form/GetStartedForm.vue';
+import GetStartedForm from "@/components/form/GetStartedForm.vue";
 export default {
-    props : ['data'],
-    components : {
-        GetStartedForm, 
-    }
-}
+    props: ["data"],
+    components: {
+        GetStartedForm,
+    },
+};
 </script>
 <style scoped>
 .contact-box {
     display: flex;
     align-items: center;
-    margin-bottom : 40px;
+    margin-bottom: 40px;
     background-color: #fbfbfb;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 1px 1px 1px #ddd;
-    margin-top : 100px;
-    transition: all ease-in .3s;
-    border-bottom: 7px solid #2ebcd4;
+    margin-top: 100px;
+    transition: all ease-in 0.3s;
+    border-bottom: 4px solid #2ebcd4;
 }
 
 .contact-box:hover {
@@ -66,12 +65,11 @@ export default {
 }
 
 .contact-details p {
-    margin-bottom : 0;
-    color : #000;
+    margin-bottom: 0;
 }
 
 .contact-box h5 {
-    font-weight:  normal;
+    font-weight: normal;
 }
 
 .contact-box i {
@@ -79,20 +77,19 @@ export default {
     font-size: 30px;
 }
 
-@media ( max-width: 768px) { 
+@media (max-width: 768px) {
     .contact-box {
-        margin-top : 15px; 
-        margin-bottom : 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 
     .get-started-form {
-        margin-top : 50px; 
-        margin-bottom : 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 
     .contact-info {
         margin-right: 15px;
     }
 }
-
 </style>

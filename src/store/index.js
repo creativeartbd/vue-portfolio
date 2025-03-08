@@ -19,12 +19,13 @@ export default createStore({
         getOptions(context) {
             context.commit("setLoading", false); // Set loading to true when starting to fetch
             // Assuming you have the menu location and endpoint set up on your WordPress site
-            const siteUrl = "https://api.cutoutpartner.com/";
+            const siteUrl = "https://cutoutpartner-api.com/";
             const restApiEndpoint = "wp-json/wp/v2/theme-options"; // Replace with the desired REST API endpoint
-            const username = "cutoutpartnerbd";
+            const username = "creativeartbd";
 
             // Replace with your generated application password
-            const applicationPassword = "yuzf wBpt sTQh TxKO 8Krf IHzY";
+            // const applicationPassword = "yuzf wBpt sTQh TxKO 8Krf IHzY";
+            const applicationPassword = "oiEr SCag Pqrn d616 Eyl7 2nkb";
 
             const headers = new Headers({
                 "Content-Type": "application/json",

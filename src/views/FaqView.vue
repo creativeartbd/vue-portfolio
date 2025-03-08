@@ -15,28 +15,25 @@
     </div>
 </template>
 <script>
-
-import TheHeaderBanner from '@/components/layout/TheHeaderBanner.vue';
-import BenefitWithUs from '../components/layout/BenefitWithUs.vue';
-import HappyClients from '../components/layout/HappyClients.vue';
-import CommonQuestions from '../components/layout/CommonQuestions.vue';
-import HowItWorks from '../components/layout/HowItWorks.vue';
+import TheHeaderBanner from "@/components/layout/TheHeaderBanner.vue";
+import BenefitWithUs from "../components/layout/BenefitWithUs.vue";
+import HappyClients from "../components/layout/HappyClients.vue";
+import CommonQuestions from "../components/layout/CommonQuestions.vue";
+import HowItWorks from "../components/layout/HowItWorks.vue";
 
 export default {
-    components : {
+    components: {
         TheHeaderBanner,
         BenefitWithUs,
         HappyClients,
         CommonQuestions,
-        HowItWorks
-    }, 
-    computed : {
+        HowItWorks,
+    },
+    computed: {
         option_data() {
             return this.$store.state.options;
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style>
-    
-</style>
+<style></style>

@@ -171,6 +171,14 @@ export default {
 <style scoped>
 .pricing-table {
     background: radial-gradient(
+        circle,
+        rgba(0, 188, 212, 1) 0%,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(0, 188, 212, 0.055081407563025264) 52%,
+        rgba(255, 255, 255, 1) 100%
+    );
+
+    /* background: radial-gradient(
             43.91% 38.55% at 46.3% -6.67%,
             rgba(226, 242, 255, 0.4) 15%,
             rgba(225, 241, 255, 0.4) 50.41%,
@@ -183,7 +191,7 @@ export default {
             rgba(225, 241, 255, 0.35) 29.18%,
             rgba(255, 255, 255, 0) 100%
         ),
-        #fff;
+        #fff; */
 }
 .pricing-table .section-title {
     padding-left: 10%;
@@ -199,12 +207,11 @@ export default {
 
 .pricing-table .price-table {
     background-color: #fff;
-}
-
-.pricing-table .price-table {
     padding: 20px;
     margin-bottom: 50px;
     transition: all 0.5s ease-in;
+    border: 1px solid #e3e3e3;
+    width: 100%;
 }
 
 .pricing-table .price-table img {
@@ -223,6 +230,10 @@ export default {
 .pricing-table .order-now {
     display: inline-block;
     margin-top: 10px;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
 }
 
 .pricing-table .price-table:hover {
@@ -233,6 +244,7 @@ export default {
     transform: scale(1.02, 1.02);
     cursor: pointer;
     transition: all ease-in 0.3s;
+    border: 1px solid #00bcd4;
 }
 
 .pricing-table .price-table.best-price {
@@ -241,6 +253,11 @@ export default {
     box-shadow: 0px 2px 101px -38px #c7c7c7;
     cursor: pointer;
     transition: all ease-in 0.3s;
+}
+
+.price-table:hover .order-now {
+    background-color: #00364b !important;
+    color: #fff !important;
 }
 
 .pricing-tab {

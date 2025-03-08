@@ -1,17 +1,27 @@
 <template>
     <div class="home-slider" v-if="data">
-        <swiper :slides-per-view="1" :space-between="50" :autoplay="{
-            delay: 2500,
-        }" @swiper="onSwiper" @slideChange="onSlideChange" :modules="modules" :effect="'fade'">
+        <swiper
+            :slides-per-view="1"
+            :space-between="50"
+            :autoplay="{
+                delay: 2500,
+            }"
+            @swiper="onSwiper"
+            @slideChange="onSlideChange"
+            :modules="modules"
+            :effect="'fade'"
+        >
             <swiper-slide v-for="(slider, index) in data.add_sliders" :key="index">
                 <img v-if="slider.slider_image" :src="slider.slider_image" />
                 <div class="container slider-container">
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="slider-content">
-                                <h2 v-if="slider.slider_title">{{ slider.slider_title}}</h2>
+                                <h2 v-if="slider.slider_title">{{ slider.slider_title }}</h2>
                                 <p v-if="slider.slider_content">{{ slider.slider_content }}</p>
-                                <button class="order-btn" v-if="slider.slider_button_text">{{ slider.slider_button_text }}</button>
+                                <button class="order-btn" v-if="slider.slider_button_text">
+                                    {{ slider.slider_button_text }}
+                                </button>
                             </div>
                         </div>
                         <div class="col-md-6"></div>
@@ -23,15 +33,15 @@
 </template>
 <script>
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay, EffectFade } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, EffectFade } from "swiper/modules";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-fade';
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 export default {
-    props : ['data'],
+    props: ["data"],
     components: {
         Swiper,
         SwiperSlide,
@@ -43,9 +53,13 @@ export default {
         const onSlideChange = (swiper) => {
             // Access the active slide and its styles
             const activeSlide = swiper.slides[swiper.activeIndex];
-            
+
             // Dynamically change the background image
-            activeSlide.style.setProperty('background-image', "url('../../../assets/images/slider-01.jpg')", 'important');
+            activeSlide.style.setProperty(
+                "background-image",
+                "url('../../../assets/images/slider-01.jpg')",
+                "important"
+            );
         };
         return {
             onSwiper,
@@ -63,25 +77,25 @@ export default {
     display: flex;
 }
 
-.slider-content h2{
-    line-height : 1.2;
-    margin-bottom : 30px;
+.slider-content h2 {
+    line-height: 1.2;
+    margin-bottom: 30px;
     font-weight: 700;
     font-size: 300%;
-    color : #fff;
+    color: #fff;
 }
 
-.slider-content p{
-    color : #fff;
+.slider-content p {
+    color: #fff;
 }
 
 .swiper-wrapper {
-    height : 100vh;
+    height: 100vh;
 }
 
-.swiper-wrapper img{
-    width : auto;
-    max-width : 100%;
+.swiper-wrapper img {
+    width: auto;
+    max-width: 100%;
     position: absolute;
     z-index: -1;
 }
@@ -92,11 +106,13 @@ export default {
     border-radius: 999px;
     box-shadow: #00bcd4 0 10px 20px -10px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: #ffffff;
     cursor: pointer;
-    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji",
+        "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+        "Noto Sans", sans-serif;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 24px;
     opacity: 1;
     outline: 0 solid transparent;
@@ -107,5 +123,6 @@ export default {
     width: fit-content;
     word-break: break-word;
     border: 0;
+    margin-top: 25px;
 }
 </style>

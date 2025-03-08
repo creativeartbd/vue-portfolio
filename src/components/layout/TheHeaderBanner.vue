@@ -8,44 +8,43 @@
 </template>
 <script>
 export default {
-    props : {
-        title : {
-            type : String,
-            default : 'Page title'
-        }
-    }, 
-}
+    props: {
+        title: {
+            type: String,
+            default: "Page title",
+        },
+    },
+};
 </script>
 <style scoped>
-
 .header-banner {
     position: relative;
-    background-image: url('../../assets/images/top-bg.svg');
+    background-image: url("../../assets/images/top-bg.svg");
     /* background-attachment: fixed; */
     background-repeat: no-repeat;
     background-size: cover;
-    height : 300px;
+    height: 300px;
     background-size: cover;
     background-position: center center;
 }
 
-
 .header-banner .header-content {
-    position : absolute;
-    top : 50%;
-    left : 50%; 
-    transform : translate(-50%, -50%);
-    z-index : 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
     text-align: center;
 }
 
-.header-banner .header-content h3  {
-    font-size:  30px;
+.header-banner .header-content h3 {
+    font-size: 30px;
     margin-bottom: 15px;
 }
 
-.header-banner .header-content h3, p {
-    color : #fff;
+.header-banner .header-content h3,
+p {
+    color: #fff;
 }
 
 .header-banner img {
@@ -62,10 +61,14 @@ export default {
     height: 100%;
     z-index: 1;
     background-color: #000;
-    opacity: .5;
+    opacity: 0.5;
 }
 
 .header-content a {
     color: #fff;
+}
+
+.header-content h3 {
+    text-shadow: 1px 1px 1px #06aed6;
 }
 </style>

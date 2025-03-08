@@ -12,20 +12,18 @@
     </div>
 </template>
 <script>
-
-import TheHeaderBanner from '@/components/layout/TheHeaderBanner.vue';
-import WorkSample from '@/components/pages/sample/WorkSample.vue';
+import TheHeaderBanner from "@/components/layout/TheHeaderBanner.vue";
+import WorkSample from "@/components/pages/sample/WorkSample.vue";
 export default {
-    components : {
+    components: {
         TheHeaderBanner,
-        WorkSample
-    }, 
-    computed : {
+        WorkSample,
+    },
+    computed: {
         option_data() {
             return this.$store.state.options;
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style>
-</style>
+<style></style>

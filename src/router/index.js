@@ -81,15 +81,13 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+        // Always scroll to top when changing routes
+        return { top: 0 };
+    },
 });
 
 router.beforeEach((to, from, next) => {
-    // This function runs before every route change
-    // console.log(`Navigating from ${from.fullPath} to ${to.fullPath}`);
-    // store.dispatch('getOptions');
-    console.log("Navigating to:", to);
-    console.log("Navigating from:", from);
-
     if (!to.matched.length) {
         console.warn("No matching route found for:", to.fullPath);
     }

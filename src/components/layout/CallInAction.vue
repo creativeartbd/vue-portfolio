@@ -8,7 +8,8 @@
                         {{ option_data.call_in_action_group.action_title }}
                     </h2>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
                     <p v-if="option_data.call_in_action_group.action_details">
                         {{ option_data.call_in_action_group.action_details }}
                     </p>
@@ -53,7 +54,6 @@ p {
 }
 .call-in-action {
     padding: 70px;
-    margin: 100px;
     background-color: #2ebcd4;
     background-image: url("https://themeim.com/wp/cliper/wp-content/uploads/2021/11/3334703.png");
     background-attachment: fixed;

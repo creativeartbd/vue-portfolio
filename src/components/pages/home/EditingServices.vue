@@ -10,11 +10,11 @@
                 <div class="col-12 text-center section-title">
                     <h2>{{ sectionTitle }}</h2>
                     <p>I would like to give you a unique photography experience.</p>
-                    <span class="divider-separator"></span>
+                    <div class="divide-separator divide-center"></div>
                 </div>
-                <div class="col-12">
+                <div class="col-12" v-if="hasValidData">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation" v-for="(tabItem, index) in images" :key="index">
+                        <li class="nav-item" role="presentation" v-for="(tabItem, index) in validTabs" :key="index">
                             <button
                                 class="nav-link"
                                 :class="{ active: index === 0 }"
@@ -24,9 +24,9 @@
                                 type="button"
                                 role="tab"
                                 :aria-controls="`content-${index}`"
-                                aria-selected="index === 0"
+                                :aria-selected="index === 0"
                             >
-                                {{ tabItem.tab_name }}
+                                {{ tabItem.service_name }}
                             </button>
                         </li>
                     </ul>
@@ -38,32 +38,34 @@
                             :id="`content-${index}`"
                             role="tabpanel"
                             :aria-labelledby="`tab-${index}`"
-                            v-for="(tabItem, index) in images"
+                            v-for="(tabItem, index) in validTabsWithImages"
                             :key="`content-${index}`"
                         >
                             <div class="row">
                                 <div class="col-md-8">
                                     <div
                                         class="ods-mini-wrapper"
-                                        v-for="(mini_image, mini_index) in tabItem.tab_images"
+                                        v-for="(mini_image, mini_index) in tabItem.services_images"
                                         :key="mini_index"
                                     >
                                         <div class="ods-mini-img">
-                                            <img :src="mini_image.mini_image" @click="handleClick(mini_image)" />
-                                            <h6 @click="handleClick(mini_image)">Portrait</h6>
+                                            <img :src="mini_image.thumb_image" @click="handleClick(mini_image)" />
+                                            <h6 @click="handleClick(mini_image)">
+                                                {{ mini_image.thumb__image_title || "Image " + (mini_index + 1) }}
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="before-after">
+                                    <div class="before-after" v-if="beforeImg && afterImg">
                                         <ImgComparisonSlider class="coloured-slider">
                                             <!-- eslint-disable -->
                                             <figure slot="first" class="before">
-                                                <img slot="first" style="width: 100%" :src.lazy="beforeImg" />
+                                                <img slot="first" style="width: 100%" :src="beforeImg" />
                                                 <figcaption>Before</figcaption>
                                             </figure>
                                             <figure slot="second" class="after">
-                                                <img slot="second" style="width: 100%" :src.lazy="afterImg" />
+                                                <img slot="second" style="width: 100%" :src="afterImg" />
                                                 <figcaption>After</figcaption>
                                             </figure>
 
@@ -77,6 +79,9 @@
                                             <!-- eslint-enable -->
                                         </ImgComparisonSlider>
                                     </div>
+                                    <div class="before-after-message" v-else>
+                                        <p>Click on an image to view before/after comparison (if available)</p>
+                                    </div>
 
                                     <div class="before-after-bottom">
                                         <a href="#">Discover this service</a>
@@ -87,6 +92,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12" v-else>
+                    <div class="alert alert-info">No editing services data available at the moment.</div>
+                </div>
             </div>
         </div>
     </div>
@@ -94,60 +102,129 @@
 
 <script>
 import { ImgComparisonSlider } from "@img-comparison-slider/vue";
+
+// Sample data structure for fallback
+const SAMPLE_DATA = {
+    our_editing_services_group: {
+        add_services: [
+            {
+                service_name: "Our Editing Service",
+                services_images: [
+                    {
+                        thumb_image: "https://api.cutoutpartner.com/wp-content/uploads/2025/03/2-1.jpg",
+                        thumb__image_title: "Title 1",
+                        before_image: "https://api.cutoutpartner.com/wp-content/uploads/2025/03/2-Before-1.jpg",
+                        after_image: "https://api.cutoutpartner.com/wp-content/uploads/2025/03/2-After-1.jpg",
+                    },
+                    {
+                        thumb_image: "https://api.cutoutpartner.com/wp-content/uploads/2025/03/OVO10179.jpg",
+                        thumb__image_title: "",
+                        before_image: false,
+                        after_image: false,
+                    },
+                ],
+            },
+        ],
+    },
+};
+
 export default {
     components: {
         ImgComparisonSlider,
     },
     data() {
         return {
-            isDataLoaded: false,
+            isDataLoaded: true,
             images: null,
-            sectionTitle: null,
+            sectionTitle: "Our Editing Services",
             sectionSubtitle: null,
             beforeImg: null,
             afterImg: null,
+            // Fallback data in case store isn't initialized
+            localData: null,
         };
     },
+    computed: {
+        // Get data either from store or local fallback
+        option_data() {
+            const storeData = this.$store?.state?.options;
+
+            // Use store data if available and valid, otherwise use local data
+            if (storeData && storeData.our_editing_services_group) {
+                return storeData;
+            }
+
+            return this.localData || { our_editing_services_group: { add_services: [] } };
+        },
+
+        // Check if we have valid data to display
+        hasValidData() {
+            return (
+                this.option_data &&
+                this.option_data.our_editing_services_group &&
+                Array.isArray(this.option_data.our_editing_services_group.add_services) &&
+                this.option_data.our_editing_services_group.add_services.length > 0
+            );
+        },
+
+        // Filter tabs that have service names
+        validTabs() {
+            if (!this.hasValidData) {
+                return [];
+            }
+
+            return this.option_data.our_editing_services_group.add_services.filter((tab) => tab && tab.service_name);
+        },
+
+        // Filter tabs that have both service names and images
+        validTabsWithImages() {
+            if (!this.hasValidData) {
+                return [];
+            }
+
+            return this.option_data.our_editing_services_group.add_services.filter(
+                (tab) => tab && tab.service_name && tab.services_images && Array.isArray(tab.services_images)
+            );
+        },
+    },
     created() {
-        // Assuming you have the menu location and endpoint set up on your WordPress site
-        const siteUrl = "https://cutoutpartner-api.com/";
-        const restApiEndpoint = "wp-json/wp/v2/pages/531?acf_format=standard"; // Replace with the desired REST API endpoint
-        const username = "dsa_clippingpathland";
+        // Initialize with fallback data
+        this.localData = SAMPLE_DATA;
 
-        // Replace with your generated application password
-        const applicationPassword = "NZeL v7Ey s8vx mXig Z4FC lyHc";
-
-        const headers = new Headers({
-            "Content-Type": "application/json",
-            Authorization: "Basic " + btoa(username + ":" + applicationPassword),
+        // Set initial image
+        this.$nextTick(() => {
+            this.setInitialImage();
         });
-
-        // Make a GET request to the WordPress REST API
-        fetch(`${siteUrl}${restApiEndpoint}`, {
-            method: "GET",
-            headers: headers,
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                this.isDataLoaded = true;
-                this.sectionTitle = data.acf.section_title;
-                this.images = data.acf.tab_name.tab_repeater;
-                this.handleClick(this.images[0].tab_images[0]);
-            })
-            .catch((error) => {
-                this.isDataLoaded = false;
-                console.error("Error fetching data:", error);
-            });
     },
     methods: {
         handleClick(mini_image) {
-            this.beforeImg = mini_image.before_image;
-            this.afterImg = mini_image.after_image;
+            if (!mini_image) return;
+
+            if (mini_image.before_image && mini_image.after_image) {
+                this.beforeImg = mini_image.before_image;
+                this.afterImg = mini_image.after_image;
+            } else {
+                // Reset if no before/after images available
+                this.beforeImg = null;
+                this.afterImg = null;
+            }
+        },
+        setInitialImage() {
+            if (!this.hasValidData) return;
+
+            // Find first service with images
+            const firstService = this.validTabsWithImages[0];
+
+            if (firstService && firstService.services_images) {
+                // Find first image with before/after
+                const firstImageWithComparison = firstService.services_images.find(
+                    (img) => img && img.before_image && img.after_image
+                );
+
+                if (firstImageWithComparison) {
+                    this.handleClick(firstImageWithComparison);
+                }
+            }
         },
     },
 };
@@ -189,6 +266,7 @@ export default {
     object-fit: cover;
     width: 100%;
     height: 156px;
+    cursor: pointer;
 }
 
 .editing-services .ods-mini-img img:hover {
@@ -231,6 +309,15 @@ export default {
     padding: 0;
     cursor: pointer;
     background: #d5e7ff;
+}
+
+.before-after-message {
+    text-align: center;
+    padding: 30px;
+    background: #f5f5f5;
+    color: #666;
+    border-radius: 4px;
+    margin-bottom: 20px;
 }
 
 .coloured-slider {
@@ -280,5 +367,10 @@ export default {
     margin-right: 15px;
     padding: 0;
     display: inline-block;
+}
+
+.alert {
+    padding: 20px;
+    border-radius: 5px;
 }
 </style>

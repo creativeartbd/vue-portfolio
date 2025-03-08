@@ -9,69 +9,82 @@
                 </div>
                 <div class="col-md-12">
                     <div class="d-flex align-items-start sample-work">
-                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <button
-                            class="nav-link"
-                            :class="{ active: activeTab === 'All' }"
-                            id="v-pills-home-tab"
-                            data-bs-toggle="pill"
-                            data-bs-target="#v-pills-home"
-                            type="button"
-                            role="tab"
-                            aria-controls="v-pills-home"
-                            aria-selected="true"
-                            @click="setActiveTab('All')"
-                        >All</button>
-                        <button
-                            v-for="(tab, index) in data.sample_works"
-                            :key="index"
-                            class="nav-link"
-                            :class="{ active: activeTab === tab.tab_name }"
-                            :id="'v-pills-' + index + '-tab'"
-                            data-bs-toggle="pill"
-                            :data-bs-target="'#v-pills-' + index"
-                            type="button"
-                            role="tab"
-                            :aria-controls="'v-pills-' + index"
-                            :aria-selected="activeTab === tab.tab_name"
-                            @click="setActiveTab(tab.tab_name)"
-                        >{{ tab.tab_name }}</button>
+                        <div
+                            class="nav flex-column nav-pills me-3"
+                            id="v-pills-tab"
+                            role="tablist"
+                            aria-orientation="vertical"
+                        >
+                            <button
+                                class="nav-link"
+                                :class="{ active: activeTab === 'All' }"
+                                id="v-pills-home-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home"
+                                type="button"
+                                role="tab"
+                                aria-controls="v-pills-home"
+                                aria-selected="true"
+                                @click="setActiveTab('All')"
+                            >
+                                All
+                            </button>
+                            <button
+                                v-for="(tab, index) in data.sample_works"
+                                :key="index"
+                                class="nav-link"
+                                :class="{ active: activeTab === tab.tab_name }"
+                                :id="'v-pills-' + index + '-tab'"
+                                data-bs-toggle="pill"
+                                :data-bs-target="'#v-pills-' + index"
+                                type="button"
+                                role="tab"
+                                :aria-controls="'v-pills-' + index"
+                                :aria-selected="activeTab === tab.tab_name"
+                                @click="setActiveTab(tab.tab_name)"
+                            >
+                                {{ tab.tab_name }}
+                            </button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
-                        <div
-                            class="tab-pane fade"
-                            :class="{ 'show active': activeTab === 'All' }"
-                            id="v-pills-home"
-                            role="tabpanel"
-                            aria-labelledby="v-pills-home-tab"
-                        >
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4" v-for="(image, index) in allImages" :key="index">
-                                    <div class="single-sample" @click.prevent="handleImgClick(image)">
-                                        <img class="active-image" :src="image.before_image" alt="">
-                                        <img class="hover-image" :src="image.after_image" alt="">
+                            <div
+                                class="tab-pane fade"
+                                :class="{ 'show active': activeTab === 'All' }"
+                                id="v-pills-home"
+                                role="tabpanel"
+                                aria-labelledby="v-pills-home-tab"
+                            >
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4" v-for="(image, index) in allImages" :key="index">
+                                        <div class="single-sample" @click.prevent="handleImgClick(image)">
+                                            <img class="active-image" :src="image.before_image" alt="" />
+                                            <img class="hover-image" :src="image.after_image" alt="" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div
-                            v-for="(tab, index) in data.sample_works"
-                            :key="index"
-                            class="tab-pane fade"
-                            :class="{ 'show active': activeTab === tab.tab_name }"
-                            :id="'v-pills-' + index"
-                            role="tabpanel"
-                            :aria-labelledby="'v-pills-' + index + '-tab'"
-                        >
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4" v-for="(image, imgIndex) in tab.tab_images" :key="imgIndex">
-                                    <div class="single-sample" @click.prevent="handleImgClick(image)" >
-                                        <img class="active-image" :src="image.before_image" alt="">
-                                        <img class="hover-image" :src="image.after_image" alt="">
+                            <div
+                                v-for="(tab, index) in data.sample_works"
+                                :key="index"
+                                class="tab-pane fade"
+                                :class="{ 'show active': activeTab === tab.tab_name }"
+                                :id="'v-pills-' + index"
+                                role="tabpanel"
+                                :aria-labelledby="'v-pills-' + index + '-tab'"
+                            >
+                                <div class="row">
+                                    <div
+                                        class="col-sm-6 col-md-4"
+                                        v-for="(image, imgIndex) in tab.tab_images"
+                                        :key="imgIndex"
+                                    >
+                                        <div class="single-sample" @click.prevent="handleImgClick(image)">
+                                            <img class="active-image" :src="image.before_image" alt="" />
+                                            <img class="hover-image" :src="image.after_image" alt="" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -93,25 +106,26 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-            <img :src="popupImgSrc.popup_image" alt="" @load="setImgLoad">
-            <p class="image-title">{{ popupImgSrc.popup_image_title }} <span class="image-count">
-                {{ popupImgSrc.index + 1 }} of {{ allImages.length }}
-            </span></p>
+            <img :src="popupImgSrc.popup_image" alt="" @load="setImgLoad" />
+            <p class="image-title">
+                {{ popupImgSrc.popup_image_title }}
+                <span class="image-count"> {{ popupImgSrc.index + 1 }} of {{ allImages.length }} </span>
+            </p>
         </div>
     </section>
 </template>
 
 <script>
 export default {
-    props : ['data'], 
+    props: ["data"],
     data() {
         return {
-            activeTab: 'All',
-            allImages : [], 
-            popupImgSrc : null,
+            activeTab: "All",
+            allImages: [],
+            popupImgSrc: null,
             isPopupVisible: false,
-            isImgLoaded : false,
-        }
+            isImgLoaded: false,
+        };
     },
     methods: {
         setImgLoad() {
@@ -119,25 +133,25 @@ export default {
         },
         handlePrev(currentIndex) {
             const prexIndex = currentIndex - 1;
-            if(this.allImages[prexIndex]) {
+            if (this.allImages[prexIndex]) {
                 const image = this.allImages[prexIndex];
                 this.popupImgSrc = {
-                    src : image.before_image, 
-                    popup_image_title : image.popup_image_title, 
-                    index : image.key,
-                    popup_image : image.popup_image
+                    src: image.before_image,
+                    popup_image_title: image.popup_image_title,
+                    index: image.key,
+                    popup_image: image.popup_image,
                 };
             }
         },
         handleNext(currentIndex) {
             const nextIndex = currentIndex + 1;
-            if(this.allImages[nextIndex]) {
+            if (this.allImages[nextIndex]) {
                 const image = this.allImages[nextIndex];
                 this.popupImgSrc = {
-                    src : image.before_image, 
-                    popup_image_title : image.popup_image_title, 
-                    index : image.key,
-                    popup_image : image.popup_image
+                    src: image.before_image,
+                    popup_image_title: image.popup_image_title,
+                    index: image.key,
+                    popup_image: image.popup_image,
                 };
             }
         },
@@ -146,38 +160,39 @@ export default {
         },
         handleImgClick(image) {
             this.popupImgSrc = {
-                src : image.before_image, 
-                popup_image_title : image.popup_image_title, 
-                index : image.key,
-                popup_image : image.popup_image
+                src: image.before_image,
+                popup_image_title: image.popup_image_title,
+                index: image.key,
+                popup_image: image.popup_image,
             };
             this.isPopupVisible = true;
         },
         setActiveTab(tabTitle) {
             this.activeTab = tabTitle;
-        }
+        },
     },
     mounted() {
         let uniqueIndex = 0; // Initialize a counter for unique indices
         if (this.data && this.data.sample_works && Array.isArray(this.data.sample_works)) {
-            this.data.sample_works.forEach(tab => {
-                tab.tab_images.forEach(image => {
+            this.data.sample_works.forEach((tab) => {
+                tab.tab_images.forEach((image) => {
                     image.key = uniqueIndex++; // Assign a unique index to each image
                     this.allImages.push(image); // Add the image to allImages array
                 });
             });
         }
-    }
-}
+    },
+};
 </script>
 <style>
 .sample-page {
     background-color: #ddd;
 }
-.sample-work .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.sample-work .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
     background-color: #00bcd4;
     /* background-image: linear-gradient(90deg, #00bcd4 0%, #0dd1ff 100%); */
-    border : none;
+    border: none;
 }
 
 .sample-work .nav-link {
@@ -189,7 +204,7 @@ export default {
 }
 
 .sample-work .nav button {
-    width : 250px;
+    width: 250px;
     margin-bottom: 10px;
 }
 
@@ -197,25 +212,25 @@ export default {
     box-shadow: 1px 1px 1px #ddd;
     margin-bottom: 15px;
     cursor: pointer;
-    margin-bottom: 20px;
-    width: 327px;
+    margin-bottom: 25px;
+    min-width: 327px;
 }
 
 .single-sample img {
-    width : 100%;
+    width: 100%;
 }
 
 .single-sample .hover-image {
-    display : none;
-    transition: all ease-in .1s;
+    display: none;
+    transition: all ease-in 0.1s;
 }
 
 .single-sample:hover .hover-image {
-    display : block;
+    display: block;
 }
 
 .single-sample:hover .active-image {
-    display : none;
+    display: none;
 }
 
 .overlay {
@@ -241,7 +256,7 @@ export default {
 }
 
 .image-popup p {
-    margin-bottom : 0;
+    margin-bottom: 0;
 }
 
 .image-popup img {
@@ -284,5 +299,4 @@ export default {
 .divide-separator {
     background: linear-gradient(to right, #5b5b5b, #dddddd);
 }
-
 </style>
