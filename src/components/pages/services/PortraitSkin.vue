@@ -54,8 +54,10 @@ export default {
     data() {
         return {
             bgColor: this.color,
-            beforeImg: "https://ephotovn.com/wp-content/uploads/2023/02/Richland_Unretouched-09-2022_0471.jpg",
-            afterImg: "https://ephotovn.com/wp-content/uploads/2023/02/Richland_Unretouched-09-2022_047.jpg",
+            beforeImg:
+                "https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/1S7A3520-Before.jpg?fit=600%2C686&ssl=1",
+            afterImg:
+                "https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/1S7A3520-After.jpg?fit=600%2C686&ssl=1",
         };
     },
     components: {

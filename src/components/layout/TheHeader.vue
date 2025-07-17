@@ -50,87 +50,24 @@
                                             <li class="title">
                                                 <b>{{ service.service_name }}</b>
                                             </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
+
+                                            <template v-if="service.sub_service_group.length">
+                                                <li
+                                                    v-for="(subService, subKey) in service.sub_service_group"
+                                                    :key="subKey"
                                                 >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                        </div>
-                                        <div class="dropdown-items">
-                                            <li class="title"><b>Background Removal</b></li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                        </div>
-                                        <div class="dropdown-items">
-                                            <li class="title"><b>Image Retouching</b></li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
-                                            <li>
-                                                <router-link to="/single-service" class="nav-link" aria-current="page"
-                                                    >Ecommmerce photo editing services</router-link
-                                                >
-                                            </li>
+                                                    <router-link
+                                                        :to="{
+                                                            name: 'single-service',
+                                                            params: { slug: subService.sub_service_slug },
+                                                        }"
+                                                        class="nav-link"
+                                                        aria-current="page"
+                                                        >{{ subService.sub_service_name }}</router-link
+                                                    >
+                                                </li>
+                                            </template>
+                                            <!-- <pre>{{ service.sub_service_group }}</pre> -->
                                         </div>
                                     </div>
                                 </ul>

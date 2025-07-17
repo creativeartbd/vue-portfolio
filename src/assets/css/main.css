@@ -84,14 +84,35 @@ section p {
 
 } */
 
-.divide-separator {
-    background: rgb(0,188,212);
-background: linear-gradient(90deg, rgba(0,188,212,1) 0%, rgba(255,255,255,1) 0%, rgba(0,188,212,1) 52%, rgba(255,255,255,1) 100%);
+.divide-separator{
+    /* background: rgb(0,188,212);
+background: linear-gradient(90deg, rgba(0,188,212,1) 0%, rgba(255,255,255,1) 0%, rgba(0,188,212,1) 52%, rgba(255,255,255,1) 100%); */
+    background-color: #fbfbfb;
     height: 2px;
-    width: 20%;
-    margin-top : 5px;
-    margin-bottom : 20px;
+    width: 200px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.divide-separator::before {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    width: 100px;
+    height: 4px;
+    background-color: #75c6d8;
+    content: "";
+    text-align: center;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 .divide-center {
     margin-left : auto;
@@ -168,7 +189,7 @@ background: linear-gradient(90deg, rgba(0,188,212,1) 0%, rgba(255,255,255,1) 0%,
     border : #fff;
 }
 
-.divide-separator divide-center {
+.divide-separator .divide-center {
     /* margin-bottom : 50px; */
     margin-top: 15px;
     display : inline-block;
@@ -178,7 +199,7 @@ background: linear-gradient(90deg, rgba(0,188,212,1) 0%, rgba(255,255,255,1) 0%,
     position: relative;
 }   
 
-.divide-separator divide-center:before {
+.divide-separator .divide-center:before {
     content: "";
     position: absolute;
     height: 3px;
@@ -400,6 +421,72 @@ p {
 .pricing-table .price-table h3 {
     margin-bottom: 10px;
     display: inline-block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    border: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0; /* Instead of display: none */
+    visibility: hidden; /* For better accessibility */
+    transition: opacity 0.3s ease, visibility 0.3s ease; 
+}
+
+/* Define base styles for both figures */
+figure.before, 
+figure.after {
+    position: relative;
+    /* Add any other shared styling */
+}
+
+/* Ensure overlay styling is the same for both */
+figure.before .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+figure.after .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Hover effects for both */
+figure.before:hover .overlay {
+    opacity: 1;
+    visibility: visible;
+    
+}
+
+.after:hover .overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 9999 !important;
 }
 
 

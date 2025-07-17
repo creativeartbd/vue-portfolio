@@ -1,0 +1,112 @@
+ <div class="same-size ve-4">
+                                <ImgComparisonSlider class="coloured-slider">
+                                    <!-- eslint-disable -->
+                                    <figure slot="first" class="before">
+                                        <img
+                                            slot="first"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>Before</figcaption>
+                                    </figure>
+                                    <figure slot="second" class="after">
+                                        <img
+                                            slot="second"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>After</figcaption>
+                                    </figure>
+                                    <div slot="handle">
+                                        <div class="bf-circle">
+                                            <i class="bi bi-caret-left-fill"></i>
+                                            <i class="bi bi-caret-right-fill"></i>
+                                        </div>
+                                    </div>
+                                    <!-- eslint-enable -->
+                                </ImgComparisonSlider>
+                            </div>
+                            <div class="same-size ve-5">
+                                <ImgComparisonSlider class="coloured-slider">
+                                    <!-- eslint-disable -->
+                                    <figure slot="first" class="before">
+                                        <img
+                                            slot="first"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>Before</figcaption>
+                                    </figure>
+                                    <figure slot="second" class="after">
+                                        <img
+                                            slot="second"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>After</figcaption>
+                                    </figure>
+                                    <div slot="handle">
+                                        <div class="bf-circle">
+                                            <i class="bi bi-caret-left-fill"></i>
+                                            <i class="bi bi-caret-right-fill"></i>
+                                        </div>
+                                    </div>
+                                    <!-- eslint-enable -->
+                                </ImgComparisonSlider>
+                            </div>
+                            <div class="same-size ve-6">
+                                <ImgComparisonSlider class="coloured-slider">
+                                    <!-- eslint-disable -->
+                                    <figure slot="first" class="before">
+                                        <img
+                                            slot="first"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>Before</figcaption>
+                                    </figure>
+                                    <figure slot="second" class="after">
+                                        <img
+                                            slot="second"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>After</figcaption>
+                                    </figure>
+                                    <div slot="handle">
+                                        <div class="bf-circle">
+                                            <i class="bi bi-caret-left-fill"></i>
+                                            <i class="bi bi-caret-right-fill"></i>
+                                        </div>
+                                    </div>
+                                    <!-- eslint-enable -->
+                                </ImgComparisonSlider>
+                            </div>
+                            <div class="same-size ve-7">
+                                <ImgComparisonSlider class="coloured-slider">
+                                    <!-- eslint-disable -->
+                                    <figure slot="first" class="before">
+                                        <img
+                                            slot="first"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___Before-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>Before</figcaption>
+                                    </figure>
+                                    <figure slot="second" class="after">
+                                        <img
+                                            slot="second"
+                                            style="width: 100%"
+                                            src="https://i0.wp.com/cutoutpartner.com/wp-content/uploads/2021/04/IMG_3926___After-1.jpg?w=800&ssl=1"
+                                        />
+                                        <figcaption>After</figcaption>
+                                    </figure>
+                                    <div slot="handle">
+                                        <div class="bf-circle">
+                                            <i class="bi bi-caret-left-fill"></i>
+                                            <i class="bi bi-caret-right-fill"></i>
+                                        </div>
+                                    </div>
+                                    <!-- eslint-enable -->
+                                </ImgComparisonSlider>
+                            </div>

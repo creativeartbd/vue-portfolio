@@ -22,9 +22,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ "../views/ServicesView.vue"),
     },
     {
-        path: "/single-service",
+        path: "/services/:slug",
         name: "single-service",
         component: () => import(/* webpackChunkName: "about" */ "../views/SingleService.vue"),
+        props: true,
     },
     {
         path: "/sample",
@@ -81,7 +82,7 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
-    scrollBehavior(to, from, savedPosition) {
+    scrollBehavior() {
         // Always scroll to top when changing routes
         return { top: 0 };
     },

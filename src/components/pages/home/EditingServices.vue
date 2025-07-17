@@ -60,25 +60,42 @@
                                     <div class="before-after" v-if="beforeImg && afterImg">
                                         <ImgComparisonSlider class="coloured-slider">
                                             <!-- eslint-disable -->
+                                            <div class="overlay"></div>
                                             <figure slot="first" class="before">
-                                                <img slot="first" style="width: 100%" :src="beforeImg" />
+                                                <div class="overlay"></div>
+                                                <img
+                                                    slot="first"
+                                                    style="width: 100%"
+                                                    :src="beforeImg"
+                                                    @load="imageLoaded"
+                                                />
                                                 <figcaption>Before</figcaption>
                                             </figure>
                                             <figure slot="second" class="after">
-                                                <img slot="second" style="width: 100%" :src="afterImg" />
+                                                <div class="overlay"></div>
+                                                <img
+                                                    slot="second"
+                                                    style="width: 100%"
+                                                    :src="afterImg"
+                                                    @load="imageLoaded"
+                                                />
                                                 <figcaption>After</figcaption>
                                             </figure>
-
                                             <div slot="handle">
                                                 <div class="bf-circle">
                                                     <i class="bi bi-caret-left-fill"></i>
                                                     <i class="bi bi-caret-right-fill"></i>
                                                 </div>
                                             </div>
-
                                             <!-- eslint-enable -->
                                         </ImgComparisonSlider>
+                                        <div v-if="isLoading" class="loading-indicator">
+                                            <div class="spinner-border" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
                                     </div>
+
                                     <div class="before-after-message" v-else>
                                         <p>Click on an image to view before/after comparison (if available)</p>
                                     </div>
@@ -140,8 +157,8 @@ export default {
             sectionSubtitle: null,
             beforeImg: null,
             afterImg: null,
-            // Fallback data in case store isn't initialized
             localData: null,
+            isLoading: false, // Add this
         };
     },
     computed: {
@@ -196,18 +213,43 @@ export default {
             this.setInitialImage();
         });
     },
+    mounted() {
+        this.preloadImages();
+    },
     methods: {
+        preloadImages() {
+            if (!this.hasValidData) return;
+
+            this.validTabsWithImages.forEach((tab) => {
+                tab.services_images.forEach((image) => {
+                    if (image.before_image) {
+                        this.preloadImage(image.before_image);
+                    }
+                    if (image.after_image) {
+                        this.preloadImage(image.after_image);
+                    }
+                });
+            });
+        },
+        preloadImage(url) {
+            const img = new Image();
+            img.src = url;
+        },
         handleClick(mini_image) {
             if (!mini_image) return;
+
+            this.isLoading = true; // Show loading indicator
 
             if (mini_image.before_image && mini_image.after_image) {
                 this.beforeImg = mini_image.before_image;
                 this.afterImg = mini_image.after_image;
             } else {
-                // Reset if no before/after images available
                 this.beforeImg = null;
                 this.afterImg = null;
             }
+        },
+        imageLoaded() {
+            this.isLoading = false; // Hide loading indicator when images are loaded
         },
         setInitialImage() {
             if (!this.hasValidData) return;
@@ -231,6 +273,13 @@ export default {
 </script>
 
 <style scoped>
+.loading-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
 :host(:focus) {
     outline: none !important;
 }
@@ -291,9 +340,10 @@ export default {
     opacity: 0.8;
     padding: 12px;
     position: absolute;
-    top: 10%;
+    top: 50%;
     transform: translateY(-50%);
     line-height: 100%;
+    display: none;
 }
 
 .before figcaption {
@@ -304,11 +354,16 @@ export default {
     right: 12px;
 }
 
+.before-after:hover figcaption {
+    display: block;
+}
+
 .before-after {
     box-shadow: 0px 13px 38px 0px rgba(59.000000000000014, 190, 255, 0.16);
     padding: 0;
     cursor: pointer;
     background: #d5e7ff;
+    position: relative;
 }
 
 .before-after-message {
@@ -324,6 +379,7 @@ export default {
     --divider-color: rgba(255, 255, 255, 1);
     --default-handle-color: rgba(255, 255, 255, 1);
     --divider-width: 3px;
+    position: relative;
 }
 
 .bf-circle {

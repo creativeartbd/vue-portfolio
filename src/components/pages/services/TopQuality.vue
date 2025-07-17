@@ -4,10 +4,10 @@
             <div class="banner-wrapper">
                 <div class="banner-text">
                     <h2 class="mb-3" v-if="data.banner_title">{{ data.banner_title }}</h2>
-                    <p v-if="data.banner_content">{{ data.banner_content }}</p>
+                    <p v-if="data.banner_sub_title">{{ data.banner_sub_title }}</p>
                     <div class="button-group">
                         <router-link
-                            :to="data.free_trial_button_link ? data.free_trial_button_link : null"
+                            :to="data.free_trial_button_location ? data.free_trial_button_location : null"
                             v-if="data.free_trial_button_text"
                             class="btn btn-default free-trial"
                         >
@@ -15,7 +15,7 @@
                         </router-link>
 
                         <router-link
-                            :to="data.get_started_button_link ? data.get_started_button_link : null"
+                            :to="data.get_started_button_location ? data.get_started_button_location : null"
                             v-if="data.get_started_button_text"
                             class="btn btn-default get-started"
                         >
@@ -23,8 +23,8 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="banner-image" v-if="data.banner_background_image">
-                    <img :src="data.banner_background_image" width="100%" />
+                <div class="banner-image" v-if="data.banner_image">
+                    <img :src="data.banner_image" width="100%" />
                 </div>
             </div>
         </div>

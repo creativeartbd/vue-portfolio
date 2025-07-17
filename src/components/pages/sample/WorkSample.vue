@@ -295,8 +295,4 @@ export default {
     font-size: 30px;
     cursor: pointer;
 }
-
-.divide-separator {
-    background: linear-gradient(to right, #5b5b5b, #dddddd);
-}
 </style>

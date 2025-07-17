@@ -2,13 +2,12 @@
     <div class="get-started" :style="{ backgroundColor: color }">
         <div class="container">
             <div class="row">
-                <div class="col-md-6" v-if="data">
+                <div class="col-md-6 section-title" v-if="data">
                     <div class="get-started-details">
-                        <div class="section-title">
-                            <h2 v-if="data.section_title">{{ data.section_title }}</h2>
-                            <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
-                            <div class="divide-separator divide-center"></div>
-                        </div>
+                        <h2 v-if="data.section_title">{{ data.section_title }}</h2>
+                        <p v-if="data.section_sub_title">{{ data.section_sub_title }}</p>
+                        <div class="divide-separator divide-center"></div>
+
                         <div v-if="data.section_description" v-html="data.section_description"></div>
                     </div>
                 </div>
